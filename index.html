@@ -412,6 +412,48 @@ header nav button{
   z-index:30 !important;
 }
 
+
+.product-editor{
+  background:#fff;
+  border:1px solid #dce3e9;
+  border-radius:16px;
+  padding:20px;
+  margin-top:18px;
+  box-shadow:0 5px 16px rgba(0,0,0,.06);
+}
+.product-editor h3{margin:0 0 14px;color:#12375f}
+.editor-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+}
+.editor-field label{
+  display:block;
+  font-size:13px;
+  font-weight:900;
+  color:#334b61;
+  margin-bottom:5px;
+}
+.editor-field input,.editor-field textarea,.editor-field select{
+  width:100%;
+  box-sizing:border-box;
+  border:1px solid #ccd6df;
+  border-radius:9px;
+  padding:10px 11px;
+  font:inherit;
+  background:#fff;
+}
+.editor-field textarea{min-height:90px;resize:vertical}
+.editor-full{grid-column:1/-1}
+.editor-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.editor-btn{
+  border:0;border-radius:9px;padding:10px 15px;font-weight:900;cursor:pointer
+}
+.editor-save{background:#ffd33d;color:#111}
+.editor-delete{background:#e8edf2;color:#23384d}
+.editor-msg{margin-top:9px;font-size:13px;color:#26734d;font-weight:800}
+@media(max-width:650px){.editor-grid{grid-template-columns:1fr}.editor-full{grid-column:auto}}
+
 </style>
 </head>
 <body>
@@ -472,7 +514,59 @@ header nav button{
 <div class="admin-box"><h3>เพิ่มรูปให้บริการ</h3><select id="serviceSelect"><option value="car1">โรงจอดรถ 1 คัน</option><option value="car2">โรงจอดรถ 2 คัน</option><option value="car3">โรงจอดรถ 3 คัน</option><option value="car4">โรงจอดรถ 4 คัน + รูฟ</option><option value="awning">กันสาด</option><option value="roof">ทำหลังคา</option></select><input id="serviceImage" type="file" accept="image/*" multiple><button class="btn primary" onclick="saveServiceImages()">บันทึกรูปบริการ</button></div>
 </div>
 <p id="adminMsg" class="note"></p>
-</div></section>
+</div>
+<div class="product-editor" id="productEditor">
+  <h3>📝 แก้ไขรายละเอียดสินค้า</h3>
+  <div class="editor-grid">
+    <div class="editor-field editor-full">
+      <label>เลือกสินค้า</label>
+      <select id="editProduct"></select>
+    </div>
+    <div class="editor-field">
+      <label>ชื่อรุ่น</label>
+      <input id="editModel" placeholder="เช่น VG Glacia">
+    </div>
+    <div class="editor-field">
+      <label>ความกว้าง</label>
+      <input id="editWidth" placeholder="เช่น 33.4 ซม.">
+    </div>
+    <div class="editor-field">
+      <label>ความหนา</label>
+      <input id="editThickness" placeholder="เช่น 9 มม.">
+    </div>
+    <div class="editor-field">
+      <label>ความยาว</label>
+      <input id="editLength" placeholder="เช่น 3 / 4 / 5 / 6 ม.">
+    </div>
+    <div class="editor-field">
+      <label>สี</label>
+      <input id="editColors" placeholder="เช่น ขาว / เทา / น้ำตาล">
+    </div>
+    <div class="editor-field">
+      <label>วัสดุ</label>
+      <input id="editMaterial" placeholder="เช่น iR-uPVC">
+    </div>
+    <div class="editor-field">
+      <label>ระยะแป</label>
+      <input id="editPurlin" placeholder="เช่น 80 ซม.">
+    </div>
+    <div class="editor-field">
+      <label>ความลาดชัน</label>
+      <input id="editSlope" placeholder="เช่น 3° ขึ้นไป">
+    </div>
+    <div class="editor-field editor-full">
+      <label>รายละเอียดเพิ่มเติม</label>
+      <textarea id="editMore" placeholder="จุดเด่น / การใช้งาน / ข้อมูลอื่น ๆ"></textarea>
+    </div>
+  </div>
+  <div class="editor-actions">
+    <button class="editor-btn editor-save" id="saveProductSpec">บันทึกข้อมูลสินค้า</button>
+    <button class="editor-btn editor-delete" id="clearProductSpec">ล้างข้อมูลที่แก้เอง</button>
+  </div>
+  <div class="editor-msg" id="editorMsg"></div>
+</div>
+
+</section>
 
 
 
@@ -652,7 +746,8 @@ async function openProductDetail(index){
   const page=document.getElementById("productDetailPage");
   if(!page) return;
   document.getElementById("detailTitle").textContent=p[1];
-  const spec=specs[p[1]]||{};
+  const customAll=(window.kroofCustomSpecs && window.kroofCustomSpecs())||{};
+  const spec=Object.assign({}, specs[p[1]]||{}, customAll[p[1]]||{});
   document.getElementById("detailSpecs").innerHTML=Object.entries(spec).map(([k,v])=>
     '<div class="detail-spec-row"><span class="detail-spec-key">'+k+
     '</span><span class="detail-spec-value">'+v+'</span></div>').join("");
@@ -763,6 +858,91 @@ function toggleAdmin(){
     setTimeout(()=>el.scrollIntoView({behavior:"smooth",block:"start"}),50);
   }
 }
+</script>
+
+
+<script>
+(function(){
+const specStorageKey="kroof_product_specs";
+
+function loadCustomSpecs(){
+  try{return JSON.parse(localStorage.getItem(specStorageKey)||"{}")}catch(e){return {}}
+}
+function saveCustomSpecs(x){localStorage.setItem(specStorageKey,JSON.stringify(x))}
+
+function editorProducts(){
+  return (window.products && Array.isArray(window.products)) ? window.products : [
+    ["vinyl","VG Snow Roof","ไวนิล • VG"],
+    ["vinyl","VG Glacia","ไวนิล • VG"],
+    ["vinyl","VG Winter Roof","ไวนิล • VG"],
+    ["vinyl","VG Winter Plus","ไวนิล • VG"],
+    ["vinyl","RoofyRoof","ไวนิล"],
+    ["vinyl","ภูเขา PR4","ไวนิล • ภูเขา"],
+    ["vinyl","ภูเขา PR5","ไวนิล • ภูเขา"],
+    ["vinyl","ภูเขา PR8","ไวนิล • ภูเขา"],
+    ["fiberglass","JROOF","ไฟเบอร์กลาส"],
+    ["fiberglass","Mini Gold","ไฟเบอร์กลาส"],
+    ["fiberglass","D-Line","ไฟเบอร์กลาส"],
+    ["poly","โพลีคาร์บอเนต","โพลีคาร์บอเนต"]
+  ];
+}
+
+function fillEditor(){
+  const sel=document.getElementById("editProduct");
+  if(!sel)return;
+  const ps=editorProducts();
+  sel.innerHTML=ps.map((p,i)=>`<option value="${i}">${p[1]}</option>`).join("");
+  loadEditorValues();
+}
+function loadEditorValues(){
+  const sel=document.getElementById("editProduct");
+  if(!sel)return;
+  const ps=editorProducts(), name=ps[Number(sel.value)]?.[1];
+  const custom=loadCustomSpecs()[name]||{};
+  const ids={
+    editModel:"ชื่อรุ่น",editWidth:"ความกว้าง",editThickness:"ความหนา",
+    editLength:"ความยาว",editColors:"สี",editMaterial:"วัสดุ",
+    editPurlin:"ระยะแป",editSlope:"ความลาดชัน",editMore:"รายละเอียดเพิ่มเติม"
+  };
+  Object.entries(ids).forEach(([id,key])=>{
+    const el=document.getElementById(id); if(el) el.value=custom[key]||"";
+  });
+  const msg=document.getElementById("editorMsg"); if(msg)msg.textContent="";
+}
+function saveEditorValues(){
+  const sel=document.getElementById("editProduct"), ps=editorProducts();
+  const name=ps[Number(sel.value)]?.[1]; if(!name)return;
+  const ids={
+    editModel:"ชื่อรุ่น",editWidth:"ความกว้าง",editThickness:"ความหนา",
+    editLength:"ความยาว",editColors:"สี",editMaterial:"วัสดุ",
+    editPurlin:"ระยะแป",editSlope:"ความลาดชัน",editMore:"รายละเอียดเพิ่มเติม"
+  };
+  const all=loadCustomSpecs(), obj={};
+  Object.entries(ids).forEach(([id,key])=>{
+    const v=(document.getElementById(id)?.value||"").trim();
+    if(v)obj[key]=v;
+  });
+  all[name]=obj; saveCustomSpecs(all);
+  const msg=document.getElementById("editorMsg");
+  if(msg)msg.textContent="บันทึกข้อมูล "+name+" แล้ว";
+}
+function clearEditorValues(){
+  const sel=document.getElementById("editProduct"), ps=editorProducts();
+  const name=ps[Number(sel.value)]?.[1]; if(!name)return;
+  const all=loadCustomSpecs(); delete all[name]; saveCustomSpecs(all);
+  loadEditorValues();
+  const msg=document.getElementById("editorMsg");
+  if(msg)msg.textContent="ล้างข้อมูลที่แก้เองแล้ว";
+}
+
+document.addEventListener("DOMContentLoaded",()=>{
+  fillEditor();
+  document.getElementById("editProduct")?.addEventListener("change",loadEditorValues);
+  document.getElementById("saveProductSpec")?.addEventListener("click",saveEditorValues);
+  document.getElementById("clearProductSpec")?.addEventListener("click",clearEditorValues);
+});
+window.kroofCustomSpecs=loadCustomSpecs;
+})();
 </script>
 
 </body>

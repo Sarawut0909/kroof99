@@ -317,6 +317,44 @@ header nav button:hover{
   color:#111 !important;
 }
 
+
+.card-actions{
+  display:flex;
+  gap:9px;
+  margin-top:12px;
+  flex-wrap:wrap;
+}
+.card-actions button{
+  border:0;
+  border-radius:13px;
+  padding:11px 16px;
+  min-height:44px;
+  font-size:16px;
+  font-weight:900;
+  cursor:pointer;
+  transition:.15s ease;
+}
+.price-btn{
+  background:#ffd33d;
+  color:#111;
+}
+.price-btn:hover{
+  background:#ffcc22;
+  transform:translateY(-1px);
+}
+.detail-btn{
+  background:#0b3568;
+  color:#fff;
+}
+.detail-btn:hover{
+  background:#082b55;
+  transform:translateY(-1px);
+}
+@media(max-width:520px){
+  .card-actions{flex-direction:column}
+  .card-actions button{width:100%}
+}
+
 </style>
 </head>
 <body>
@@ -537,10 +575,17 @@ async function renderProducts(){
       '<div class="card-body">'+
       '<span class="tag">'+p[2]+'</span>'+
       '<h3>'+p[1]+'</h3>'+
-      '<div class="ask-price">สอบถามราคา</div>'+
+      '<div class="card-actions">'+
+      '<button class="price-btn" type="button">สอบถามราคา</button>'+
+      '<button class="detail-btn" type="button">รายละเอียด</button>'+
+      '</div>'+
       '</div>';
     card.querySelector(".pic").addEventListener("click",()=>openProductDetail(i));
-    card.querySelector(".ask-price").addEventListener("click",()=>openProductDetail(i));
+    card.querySelector(".detail-btn").addEventListener("click",()=>openProductDetail(i));
+    card.querySelector(".price-btn").addEventListener("click",(e)=>{
+      e.stopPropagation();
+      alert("กรุณาติดต่อ K-Roof เพื่อสอบถามราคา");
+    });
     grid.appendChild(card);
   }
 }

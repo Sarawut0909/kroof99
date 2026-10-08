@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>K-Roof | หลังคาเครูฟ</title>
+<style>
+:root{--navy:#082b55;--blue:#0b4d8d;--gold:#d6a83a;--bg:#f5f7fa;--text:#17202a}
+*{box-sizing:border-box} body{margin:0;font-family:Arial,"Noto Sans Thai",sans-serif;background:var(--bg);color:var(--text)}
+header{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid #ddd}
+.nav{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:12px 18px;gap:15px}
+.logo{font-weight:900;font-size:25px;color:var(--navy)} .logo small{display:block;font-size:12px;font-weight:600}
+nav{display:flex;gap:8px;flex-wrap:wrap} nav button{border:0;background:#eef3f8;padding:10px 14px;border-radius:20px;font-weight:700;cursor:pointer}
+nav button:hover{background:#dce9f5}
+.hero{background:linear-gradient(135deg,#06284d,#0b5795);color:#fff;padding:65px 18px}
+.hero-in{max-width:1200px;margin:auto;display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:center}
+.hero h1{font-size:clamp(38px,6vw,70px);margin:0 0 12px}.hero p{font-size:20px;line-height:1.6}
+.cta{display:flex;gap:10px;flex-wrap:wrap}.btn{display:inline-block;padding:13px 20px;border-radius:12px;text-decoration:none;font-weight:800;border:0;cursor:pointer}.primary{background:#ffd43b;color:#17202a}.light{background:#fff;color:var(--navy)}
+.hero-card{background:rgba(255,255,255,.12);padding:25px;border-radius:22px;border:1px solid rgba(255,255,255,.2)}
+section{max-width:1200px;margin:auto;padding:35px 18px} h2{font-size:32px;margin:0 0 24px;color:var(--navy)}
+.tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px}.tab{padding:10px 16px;border-radius:999px;border:1px solid #ccd7e3;background:#fff;cursor:pointer;font-weight:700}.tab.active{background:var(--navy);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 5px 20px rgba(0,0,0,.07);border:1px solid #e1e7ee}
+.pic{aspect-ratio:4/3;background:#e9eef4;display:flex;align-items:center;justify-content:center;overflow:hidden}.pic img{width:100%;height:100%;object-fit:cover}.placeholder{color:#718096;text-align:center;padding:20px}
+.card-body{padding:17px}.card h3{margin:0 0 7px;font-size:20px}.tag{display:inline-block;background:#e8f1fb;color:#174f82;padding:5px 9px;border-radius:8px;font-size:12px;font-weight:700}
+.card .actions{display:flex;gap:8px;margin-top:14px}.small{padding:9px 12px;border-radius:9px;font-size:13px}
+.service{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.service .card{padding-bottom:10px}
+.contact{background:var(--navy);color:#fff}.contact h2{color:#fff}.contact-box{display:grid;grid-template-columns:1fr 1fr;gap:20px}.contact a{color:#fff}.contact-item{background:rgba(255,255,255,.08);padding:20px;border-radius:15px}
+footer{background:#061d38;color:#fff;text-align:center;padding:22px}
+#admin{display:none;background:#fff0d8;border-top:1px solid #e7c98d}.admin-inner{max-width:1200px;margin:auto;padding:25px 18px}.admin-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.admin-box{background:#fff;padding:16px;border-radius:14px;border:1px solid #e3d4b5}.admin-box input,.admin-box select,.admin-box textarea{width:100%;padding:10px;margin:7px 0;border:1px solid #ccd3db;border-radius:8px}.note{font-size:13px;color:#665a43;line-height:1.5}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.service{grid-template-columns:repeat(2,1fr)}.hero-in{grid-template-columns:1fr}.contact-box{grid-template-columns:1fr}}
+@media(max-width:560px){.grid,.service{grid-template-columns:1fr}.nav{align-items:flex-start;flex-direction:column}.hero{padding:45px 18px}.admin-row{grid-template-columns:1fr}}
+
+.catalog-head{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:24px;padding:24px 26px;background:#fff;border-radius:22px;border:1px solid #e3e9ef;box-shadow:0 7px 25px rgba(8,43,85,.06)}
+.catalog-head h2{margin:3px 0 6px;font-size:34px}.catalog-head p{margin:0;color:#6b7785}
+.eyebrow{font-size:12px;font-weight:900;letter-spacing:2px;color:#b08421}
+.quickbar{max-width:1200px;margin:18px auto 0;padding:11px 18px;background:#082b55;color:#fff;border-radius:12px;display:flex;justify-content:space-between;align-items:center;font-size:14px}
+.quickbar a{color:#fff;background:#19b95b;padding:7px 12px;border-radius:8px;text-decoration:none;font-weight:800}
+@media(max-width:650px){.catalog-head{display:block}.quickbar{margin:10px 12px 0;display:block}.quickbar a{display:inline-block;margin-top:7px}}
+
+
+header{
+  background:#0a0a0a !important;
+  border-bottom:3px solid #d6a83a !important;
+  box-shadow:0 3px 16px rgba(0,0,0,.25);
+}
+.nav{color:#fff}
+.logo{color:#fff}
+.logo small{color:#d6d6d6}
+nav button{
+  background:#1b1b1b;
+  color:#fff;
+  border:1px solid #333;
+}
+nav button:hover{
+  background:#d6a83a;
+  color:#111;
+}
+
+
+/* K-Roof: header only */
+header{
+  background:#000 !important;
+  border-bottom:2px solid #000 !important;
+  color:#fff !important;
+}
+header .nav{color:#fff !important}
+header .logo{color:#fff !important}
+header .logo small{color:#fff !important}
+header nav button{
+  background:#000 !important;
+  color:#fff !important;
+  border:1px solid #333 !important;
+}
+header nav button:hover{
+  background:#222 !important;
+  color:#fff !important;
+}
+
+
+.gallery-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.82);z-index:100;align-items:center;justify-content:center;padding:18px}
+.gallery-modal.show{display:flex}
+.gallery-box{width:min(1000px,96vw);max-height:94vh;background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.4);position:relative}
+.gallery-top{padding:15px 20px;background:#082b55;color:#fff;display:flex;justify-content:space-between;align-items:center}
+.gallery-top h3{margin:0;font-size:20px}
+.gallery-close{border:0;background:#fff;color:#082b55;border-radius:50%;width:36px;height:36px;font-size:22px;cursor:pointer}
+.gallery-main{background:#101820;min-height:420px;display:flex;align-items:center;justify-content:center;position:relative}
+.gallery-main img{max-width:100%;max-height:62vh;object-fit:contain;display:block}
+.gallery-nav{position:absolute;top:50%;transform:translateY(-50%);border:0;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.9);color:#082b55;font-size:26px;cursor:pointer}
+.gallery-prev{left:14px}.gallery-next{right:14px}
+.gallery-thumbs{display:flex;gap:10px;overflow-x:auto;padding:13px;background:#f3f6f9}
+.gallery-thumb{width:78px;height:58px;flex:0 0 auto;border:2px solid transparent;border-radius:8px;overflow:hidden;background:#ddd;cursor:pointer}
+.gallery-thumb.active{border-color:#d6a83a}.gallery-thumb img{width:100%;height:100%;object-fit:cover}
+.gallery-empty{text-align:center;color:#64748b;padding:55px 20px;font-weight:700}
+.card .pic{cursor:pointer}
+.service .pic{cursor:pointer}
+
+
+.folder-box{max-width:1100px;width:96vw}
+.folder-label{font-size:10px;letter-spacing:2px;color:#d6a83a;font-weight:900;margin-bottom:2px}
+.folder-content{background:#f4f6f8;padding:18px;max-height:78vh;overflow:auto}
+.folder-path{background:#fff;border:1px solid #dce3e9;border-radius:10px;padding:10px 14px;color:#40566b;font-weight:800;margin-bottom:14px}
+.folder-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.folder-item{background:#fff;border:1px solid #dce3e9;border-radius:12px;padding:7px;cursor:pointer;transition:.18s;box-shadow:0 3px 10px rgba(0,0,0,.05)}
+.folder-item:hover{transform:translateY(-3px);border-color:#d6a83a;box-shadow:0 8px 20px rgba(0,0,0,.12)}
+.folder-item img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:8px;display:block}
+.folder-item .filename{font-size:12px;color:#526477;padding:8px 3px 3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.image-lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.94);z-index:200;align-items:center;justify-content:center;padding:55px 70px}
+.image-lightbox.show{display:flex}
+.image-lightbox>img{max-width:92vw;max-height:82vh;object-fit:contain;border-radius:6px}
+.lightbox-close{position:absolute;right:18px;top:15px;width:42px;height:42px;border:0;border-radius:50%;background:#fff;color:#111;font-size:28px;cursor:pointer}
+.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);width:50px;height:50px;border:0;border-radius:50%;background:rgba(255,255,255,.9);color:#082b55;font-size:34px;cursor:pointer}
+.lightbox-prev{left:18px}.lightbox-next{right:18px}
+.lightbox-caption{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.65);color:#fff;padding:7px 14px;border-radius:20px;font-size:13px;max-width:80%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:800px){.folder-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:560px){.folder-grid{grid-template-columns:repeat(2,1fr)}.image-lightbox{padding:45px 48px}.lightbox-nav{width:40px;height:40px;font-size:27px}.lightbox-prev{left:7px}.lightbox-next{right:7px}}
+
+
+.product-page{
+  position:fixed;inset:0;background:#f4f6f8;z-index:150;
+  display:none;overflow:auto;
+}
+.product-page.show{display:block}
+.product-page-head{
+  position:sticky;top:0;z-index:3;background:#000;color:#fff;
+  display:flex;align-items:center;gap:14px;padding:14px 22px;
+  box-shadow:0 2px 12px rgba(0,0,0,.2)
+}
+.product-back{
+  border:1px solid #555;background:#111;color:#fff;border-radius:9px;
+  padding:9px 15px;font-weight:800;cursor:pointer
+}
+.product-page-title{font-size:22px;font-weight:900}
+.product-page-body{max-width:1200px;margin:auto;padding:28px 20px 60px}
+.product-folder{
+  background:#fff;border:1px solid #dde3e8;border-radius:14px;
+  padding:14px 18px;margin-bottom:20px;font-weight:800;color:#45596b
+}
+.product-gallery{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:16px
+}
+.product-photo{
+  background:#fff;border:1px solid #dce3e9;border-radius:14px;padding:8px;
+  cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.06);transition:.18s
+}
+.product-photo:hover{transform:translateY(-3px);box-shadow:0 10px 22px rgba(0,0,0,.13);border-color:#d6a83a}
+.product-photo img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:9px;display:block}
+.product-photo-name{padding:9px 4px 3px;font-size:13px;color:#526477;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.product-no-image{
+  grid-column:1/-1;background:#fff;border:2px dashed #ccd5dd;border-radius:14px;
+  padding:55px 20px;text-align:center;color:#718092
+}
+@media(max-width:900px){.product-gallery{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){.product-gallery{grid-template-columns:repeat(2,1fr)}.product-page-title{font-size:18px}}
+
+
+.photo-spec-title{font-size:12px;font-weight:900;color:#111;margin:8px 0 3px}
+.photo-spec{margin-top:8px;border-top:1px solid #e5e9ed;padding-top:7px}
+.spec-row{display:flex;justify-content:space-between;gap:8px;padding:3px 1px;font-size:12px;line-height:1.35}
+.spec-key{font-weight:900;color:#263b4f;white-space:nowrap}
+.spec-value{text-align:right;color:#647487}
+
+
+.product-detail-page{
+  position:fixed;inset:0;background:#f4f6f8;z-index:180;
+  display:none;overflow:auto
+}
+.product-detail-page.show{display:block}
+.detail-head{
+  position:sticky;top:0;z-index:5;background:#000;color:#fff;
+  display:flex;align-items:center;gap:14px;padding:14px 22px;
+  box-shadow:0 2px 12px rgba(0,0,0,.2)
+}
+.detail-back{
+  background:#111;color:#fff;border:1px solid #555;border-radius:9px;
+  padding:9px 15px;font-weight:900;cursor:pointer
+}
+.detail-title{font-size:21px;font-weight:900}
+.detail-wrap{max-width:1100px;margin:auto;padding:28px 20px 60px}
+.detail-info{
+  background:#fff;border-radius:16px;padding:22px;margin-bottom:24px;
+  box-shadow:0 4px 14px rgba(0,0,0,.06);border:1px solid #e0e5e9
+}
+.detail-info h2{margin:0 0 14px;font-size:22px}
+.detail-spec-row{
+  display:flex;gap:18px;border-bottom:1px solid #edf0f2;padding:9px 0;
+}
+.detail-spec-key{font-weight:900;min-width:120px;color:#263b4f}
+.detail-spec-value{color:#566a7c}
+.detail-images-title{font-size:20px;font-weight:900;margin:22px 0 12px}
+.detail-images{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:16px
+}
+.detail-image{
+  background:#fff;border-radius:14px;padding:8px;border:1px solid #dce3e9;
+  cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.06)
+}
+.detail-image img{
+  width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:9px;display:block
+}
+.detail-empty{
+  background:#fff;border:2px dashed #ccd5dd;border-radius:14px;
+  padding:50px 20px;text-align:center;color:#718092
+}
+@media(max-width:700px){.detail-images{grid-template-columns:repeat(2,1fr)}}
+
+</style>
+</head>
+<body>
+<header><div class="nav">
+<div class="logo">K-Roof<small>หลังคาเครูฟ • จำหน่ายและรับติดตั้ง</small></div>
+<nav>
+<button onclick="go('home')">หน้าแรก</button><button onclick="go('products')">สินค้า</button><button onclick="go('services')">บริการ</button><button onclick="go('contact')">ติดต่อ</button><button onclick="toggleAdmin()">จัดการรูป</button>
+</nav></div></header>
+
+<main id="home">
+<div class="quickbar">
+  <div>📞 <b>092-796-8777</b> &nbsp; | &nbsp; <b>092-872-8174</b></div>
+  <a href="https://lin.ee/ONjTmCS" target="_blank">LINE: ติดต่อ K-Roof</a>
+</div>
+<section id="products">
+<div class="catalog-head">
+  <div>
+    <div class="eyebrow">K-ROOF CATALOG</div>
+    <h2>เลือกแผ่นหลังคาที่ต้องการ</h2>
+    <p>รวมสินค้าแผ่นหลังคาหลายประเภท พร้อมดูรายละเอียดและเพิ่มรูปสินค้าได้ภายหลัง</p>
+  </div>
+</div>
+<div class="tabs" id="tabs"></div><div class="grid" id="productGrid"></div></section>
+
+<section id="services"><h2>บริการของ K-Roof</h2><p style="color:#64748b;margin-top:-12px;margin-bottom:24px">เลือกรูปแบบงานที่สนใจ แล้วกดดูรูปผลงานได้หลายรูป</p><div class="service" id="serviceGrid">
+<div class="card" onclick="openGallery('s:car1','โรงจอดรถ 1 คัน')"><div class="pic" id="spic-car1"><div class="placeholder">เพิ่มรูปโรงจอดรถ 1 คัน<br><b>คลิกเพื่อดูหลายรูป</b></div></div><div class="card-body"><h3>โรงจอดรถ 1 คัน</h3><span class="tag">มีแบบให้เลือก</span></div></div>
+<div class="card" onclick="openGallery('s:car2','โรงจอดรถ 2 คัน')"><div class="pic" id="spic-car2"><div class="placeholder">เพิ่มรูปโรงจอดรถ 2 คัน<br><b>คลิกเพื่อดูหลายรูป</b></div></div><div class="card-body"><h3>โรงจอดรถ 2 คัน</h3><span class="tag">มีแบบให้เลือก</span></div></div>
+<div class="card" onclick="openGallery('s:car3','โรงจอดรถ 3 คัน')"><div class="pic" id="spic-car3"><div class="placeholder">เพิ่มรูปโรงจอดรถ 3 คัน<br><b>คลิกเพื่อดูหลายรูป</b></div></div><div class="card-body"><h3>โรงจอดรถ 3 คัน</h3><span class="tag">มีแบบให้เลือก</span></div></div>
+<div class="card" onclick="openGallery('s:car4','โรงจอดรถ 4 คัน + รูฟ')"><div class="pic" id="spic-car4"><div class="placeholder">เพิ่มรูปโรงจอดรถ 4 คัน / รูฟ<br><b>คลิกเพื่อดูหลายรูป</b></div></div><div class="card-body"><h3>โรงจอดรถ 4 คัน + รูฟ</h3><span class="tag">มีแบบให้เลือก</span></div></div>
+<div class="card" onclick="openGallery('s:awning','กันสาด')"><div class="pic" id="spic-awning"><div class="placeholder">เพิ่มรูปกันสาด<br><b>คลิกเพื่อดูหลายรูป</b></div></div><div class="card-body"><h3>กันสาด</h3><span class="tag">ดูผลงานจริง</span></div></div>
+<div class="card" onclick="openGallery('s:roof','ทำหลังคา')"><div class="pic" id="spic-roof"><div class="placeholder">เพิ่มรูปงานหลังคา<br><b>คลิกเพื่อดูหลายรูป</b></div></div><div class="card-body"><h3>ทำหลังคา</h3><span class="tag">รับติดตั้ง</span></div></div>
+</div></section>
+
+<section class="contact" id="contact"><h2>ติดต่อ K-Roof</h2><div class="contact-box">
+<div class="contact-item"><h3>ข้อมูลสินค้า</h3><p><a href="tel:0927968777">092-796-8777 (เค)</a><br><a href="tel:0928728174">092-872-8174 (แก้ว)</a></p></div>
+<div class="contact-item"><h3>LINE</h3><p><a href="https://lin.ee/ONjTmCS" target="_blank">แชทกับ K-Roof ทาง LINE</a></p></div>
+</div></section>
+</main>
+
+<section id="admin">
+<div class="admin-inner"><h2>จัดการรูปสินค้า / รูปผลงาน</h2>
+<p class="note">เว็บนี้ทำงานออฟไลน์ได้ รูปที่เลือกจะถูกเก็บไว้ในเบราว์เซอร์เครื่องนี้ด้วย IndexedDB จึงสามารถเพิ่ม/เปลี่ยนรูปภายหลังโดยไม่ต้องแก้ HTML ใหม่ หากล้างข้อมูลเว็บไซต์ของเบราว์เซอร์ รูปที่เก็บไว้ก็อาจหายได้</p>
+<div class="admin-row">
+<div class="admin-box"><h3>เพิ่มรูปให้สินค้า</h3><select id="productSelect"></select><input id="productImage" type="file" accept="image/*" multiple><button class="btn primary" onclick="saveProductImages()">บันทึกรูปสินค้า</button></div>
+<div class="admin-box"><h3>เพิ่มรูปให้บริการ</h3><select id="serviceSelect"><option value="car1">โรงจอดรถ 1 คัน</option><option value="car2">โรงจอดรถ 2 คัน</option><option value="car3">โรงจอดรถ 3 คัน</option><option value="car4">โรงจอดรถ 4 คัน + รูฟ</option><option value="awning">กันสาด</option><option value="roof">ทำหลังคา</option></select><input id="serviceImage" type="file" accept="image/*" multiple><button class="btn primary" onclick="saveServiceImages()">บันทึกรูปบริการ</button></div>
+</div>
+<p id="adminMsg" class="note"></p>
+</div></section>
+
+
+
+<div class="product-page" id="productPage">
+  <div class="product-page-head">
+    <button class="product-back" onclick="closeProductPage()">← กลับ</button>
+    <div class="product-page-title" id="productPageTitle">สินค้า</div>
+  </div>
+  <div class="product-page-body">
+    <div class="product-folder">📁 <span id="productFolderText">รายละเอียดสินค้า</span></div>
+    <div class="product-gallery" id="productPageGallery"></div>
+  </div>
+</div>
+
+<div class="gallery-modal" id="galleryModal" onclick="if(event.target===this)closeGallery()">
+  <div class="gallery-box folder-box">
+    <div class="gallery-top">
+      <div>
+        <div class="folder-label">K-ROOF GALLERY</div>
+        <h3 id="galleryTitle">รูปภาพ</h3>
+      </div>
+      <button class="gallery-close" onclick="closeGallery()">×</button>
+    </div>
+    <div class="folder-content">
+      <div class="folder-path">📁 <span id="galleryFolderName">โฟลเดอร์รูปภาพ</span></div>
+      <div class="folder-grid" id="galleryThumbs"></div>
+      <div class="gallery-empty" id="galleryEmpty" style="display:none">
+        ยังไม่มีรูปในโฟลเดอร์นี้<br>
+        สามารถเพิ่มรูปได้จากเมนู “จัดการรูป”
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="product-detail-page" id="productDetailPage">
+  <div class="detail-head">
+    <button class="detail-back" onclick="closeProductDetail()">← กลับ</button>
+    <div class="detail-title" id="detailTitle">รายละเอียดสินค้า</div>
+  </div>
+  <div class="detail-wrap">
+    <div class="detail-info">
+      <h2>รายละเอียดของแผ่น</h2>
+      <div id="detailSpecs"></div>
+    </div>
+    <div class="detail-images-title">รูปสินค้า</div>
+    <div class="detail-images" id="detailImages"></div>
+  </div>
+</div>
+
+<div class="image-lightbox" id="imageLightbox" onclick="if(event.target===this)closeImageLightbox()">
+  <button class="lightbox-close" onclick="closeImageLightbox()">×</button>
+  <button class="lightbox-nav lightbox-prev" onclick="changeGallery(-1)">‹</button>
+  <img id="lightboxImage" src="" alt="">
+  <button class="lightbox-nav lightbox-next" onclick="changeGallery(1)">›</button>
+  <div class="lightbox-caption" id="lightboxCaption"></div>
+</div>
+<footer>K-Roof หลังคาเครูฟ • จำหน่ายแผ่นหลังคาและรับติดตั้ง</footer>
+
+<script>
+const products=[
+["vinyl","VG Snow Roof","ไวนิล • VG"],["vinyl","VG Glacia","ไวนิล • VG"],["vinyl","VG Winter Roof","ไวนิล • VG"],["vinyl","VG Winter Plus","ไวนิล • VG"],
+["vinyl","RoofyRoof","ไวนิล"],["vinyl","ภูเขา PR4","ไวนิล • ตราภูเขา"],["vinyl","ภูเขา PR5","ไวนิล • ตราภูเขา"],["vinyl","ภูเขา PR8","ไวนิล • ตราภูเขา"],
+["fiber","JROOF","ไฟเบอร์กลาส"],["fiber","Mini Gold","ไฟเบอร์กลาส"],["fiber","D-Line","ไฟเบอร์กลาส"],["poly","โพลีคาร์บอเนต","แผ่นโปร่งแสง"]
+];
+const cats={all:"ทั้งหมด",vinyl:"แผ่นไวนิล",fiber:"แผ่นไฟเบอร์กลาส",poly:"แผ่นโพลีคาร์บอเนต"};
+let current="all";
+const DB_NAME="kroof_offline", DB_VER=1, STORE="images";
+function db(){return new Promise((res,rej)=>{let r=indexedDB.open(DB_NAME,DB_VER);r.onupgradeneeded=()=>r.result.createObjectStore(STORE);r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)})}
+async function put(key, value){let d=await db();return new Promise((res,rej)=>{let tx=d.transaction(STORE,"readwrite");tx.objectStore(STORE).put(value,key);tx.oncomplete=res;tx.onerror=()=>rej(tx.error)})}
+async function get(key){let d=await db();return new Promise((res,rej)=>{let r=d.transaction(STORE).objectStore(STORE).get(key);r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)})}
+function go(id){document.getElementById(id)?.scrollIntoView({behavior:"smooth"})}
+function toggleAdmin(){let x=document.getElementById("admin");x.style.display=x.style.display==="block"?"none":"block";if(x.style.display==="block")x.scrollIntoView({behavior:"smooth"});}
+function renderTabs(){document.getElementById("tabs").innerHTML=Object.entries(cats).map(([k,v])=>`<button class="tab ${k===current?"active":""}" onclick="filter('${k}')">${v}</button>`).join("")}
+async function render(){
+renderTabs();let arr=products.filter(p=>current==="all"||p[0]===current);let grid=document.getElementById("productGrid");grid.innerHTML="";
+for(let i=0;i<arr.length;i++){let p=arr[i],idx=products.indexOf(p),imgs=await get("p"+idx)||[];let img=imgs[0];
+let c=document.createElement("div");c.className="card";c.onclick=()=>openGallery("p"+idx,p[1]);c.innerHTML=`<div class="pic">${img?`<img src="${img}" alt="${p[1]}">`:`<div class="placeholder">ยังไม่มีรูป<br><b>เพิ่มได้ภายหลัง</b></div>`}</div><div class="card-body"><span class="tag">${p[2]}</span><h3>${p[1]}</h3><div class="actions"><a class="btn small primary" href="https://lin.ee/ONjTmCS" target="_blank">รายละเอียดแผ่น</a><a class="btn small" href="tel:0927968777">ข้อมูลสินค้า</a></div></div>`;grid.appendChild(c)}
+}
+function filter(k){current=k;render()}
+function fillSelects(){document.getElementById("productSelect").innerHTML=products.map((p,i)=>`<option value="${i}">${p[1]} — ${p[2]}</option>`).join("")}
+async function filesToData(files){return Promise.all([...files].map(f=>new Promise((res,rej)=>{let r=new FileReader();r.onload=()=>res(r.result);r.onerror=rej;r.readAsDataURL(f)})))}
+async function saveProductImages(){let i=document.getElementById("productSelect").value,fs=document.getElementById("productImage").files;if(!fs.length)return msg("กรุณาเลือกรูปสินค้า");await put("p"+i,await filesToData(fs));document.getElementById("productImage").value="";msg("บันทึกรูปสินค้าแล้ว");render()}
+async function saveServiceImages(){let k=document.getElementById("serviceSelect").value,fs=document.getElementById("serviceImage").files;if(!fs.length)return msg("กรุณาเลือกรูปบริการ");await put("s"+k,await filesToData(fs));document.getElementById("serviceImage").value="";msg("บันทึกรูปบริการแล้ว");renderServiceImages()}
+function msg(t){document.getElementById("adminMsg").textContent=t}
+fillSelects();render();renderServiceImages();
+
+
+let galleryImages=[], galleryIndex=0, galleryTitle="";
+async function openGallery(key,title){
+  galleryImages=await get(key)||[];
+  galleryIndex=0;
+  galleryTitle=title;
+  document.getElementById("galleryTitle").textContent=title;
+  document.getElementById("galleryFolderName").textContent=title;
+  document.getElementById("galleryModal").classList.add("show");
+  renderFolderGallery();
+}
+function closeGallery(){document.getElementById("galleryModal").classList.remove("show")}
+function renderFolderGallery(){
+  const grid=document.getElementById("galleryThumbs");
+  const empty=document.getElementById("galleryEmpty");
+  if(!galleryImages.length){
+    grid.innerHTML="";
+    empty.style.display="block";
+    return;
+  }
+  empty.style.display="none";
+  grid.innerHTML=galleryImages.map((src,i)=>`
+    <div class="folder-item" onclick="openImageLightbox(${i})">
+      <img src="${src}" alt="${galleryTitle} รูปที่ ${i+1}">
+      <div class="filename">รูปที่ ${i+1}</div>
+    </div>`).join("");
+}
+function openImageLightbox(index){
+  galleryIndex=index;
+  renderLightbox();
+  document.getElementById("imageLightbox").classList.add("show");
+}
+function closeImageLightbox(){document.getElementById("imageLightbox").classList.remove("show")}
+function renderLightbox(){
+  if(!galleryImages.length)return;
+  document.getElementById("lightboxImage").src=galleryImages[galleryIndex];
+  document.getElementById("lightboxCaption").textContent=`${galleryTitle} — รูปที่ ${galleryIndex+1} / ${galleryImages.length}`;
+}
+function changeGallery(step){
+  if(!galleryImages.length)return;
+  galleryIndex=(galleryIndex+step+galleryImages.length)%galleryImages.length;
+  renderLightbox();
+}
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape"){
+    if(document.getElementById("imageLightbox").classList.contains("show")) closeImageLightbox();
+    else closeGallery();
+  }
+  if(e.key==="ArrowLeft")changeGallery(-1);
+  if(e.key==="ArrowRight")changeGallery(1);
+});
+
+
+async function openProductPage(index){
+  const p=products[index];
+  if(!p)return;
+  const imgs=await get("p"+index)||[];
+  document.getElementById("productPageTitle").textContent=p[1];
+  document.getElementById("productFolderText").textContent=p[1];
+  const grid=document.getElementById("productPageGallery");
+  if(!imgs.length){
+    grid.innerHTML=`<div class="product-no-image">
+      <div style="font-size:42px;margin-bottom:10px">📁</div>
+      <b>ยังไม่มีรูปของ ${p[1]}</b><br>
+      <span>เพิ่มรูปหลายรูปได้จากเมนู “จัดการรูป”</span>
+    </div>`;
+  }else{
+    grid.innerHTML=imgs.map((src,i)=>`
+      <div class="product-photo" onclick="openProductDetail(index)">
+        <img src="${src}" alt="${p[1]} รูปที่ ${i+1}">
+        <div class="product-photo-name">สอบถามราคา</div>
+        <div class="photo-spec-title">ขนาดของแผ่นหลังคา</div>${renderSpecText(p[1])}
+      </div>`).join("");
+  }
+  document.getElementById("productPage").classList.add("show");
+  window.scrollTo(0,0);
+}
+function closeProductPage(){
+  document.getElementById("productPage").classList.remove("show");
+}
+async function openProductBigImage(productIndex,imageIndex){
+  const imgs=await get("p"+productIndex)||[];
+  galleryImages=imgs;
+  galleryIndex=imageIndex;
+  galleryTitle=products[productIndex][1];
+  renderLightbox();
+  document.getElementById("imageLightbox").classList.add("show");
+}
+
+
+const productSpecs = {
+  "VG Snow Roof": {
+    "วัสดุ":"High Performance iR-uPVC Premium Grade",
+    "กว้าง":"ประมาณ 26.2 ซม.",
+    "ยาว":"3 / 3.5 / 4 / 4.5 / 5 / 5.5 / 6 / 6.5 ม.",
+    "หนา":"ประมาณ 6 มม.",
+    "สี":"สีขาว"
+  },
+  "VG Glacia": {
+    "กว้าง":"33.4 เซนติเมตร",
+    "หนา":"3 เซนติเมตร (หรือ 9 มิลลิเมตร ขึ้นอยู่กับการวัดโครงสร้าง)",
+    "ยาว":"3 - 6.5 เมตร หรือสั่งยาว 7 เมตรขึ้นไป"
+  },
+  "VG Winter Roof": {
+    "กว้าง":"ยังไม่ได้ระบุ",
+    "ยาว":"ยังไม่ได้ระบุ",
+    "สี":"ยังไม่ได้ระบุ"
+  },
+  "VG Winter Plus": {
+    "กว้าง":"ยังไม่ได้ระบุ",
+    "ยาว":"ยังไม่ได้ระบุ",
+    "สี":"ยังไม่ได้ระบุ"
+  },
+  "RoofyRoof": {
+    "กว้าง":"25 ซม.",
+    "ยาว":"4 / 5 / 6 ม.",
+    "สี":"ยังไม่ได้ระบุในข้อมูลสินค้า"
+  },
+  "ภูเขา PR4": {
+    "กว้าง":"ยังไม่ได้ระบุ",
+    "ยาว":"ยังไม่ได้ระบุ",
+    "สี":"ยังไม่ได้ระบุ"
+  },
+  "ภูเขา PR5": {
+    "กว้าง":"ยังไม่ได้ระบุ",
+    "ยาว":"ยังไม่ได้ระบุ",
+    "สี":"ยังไม่ได้ระบุ"
+  },
+  "ภูเขา PR8": {
+    "กว้าง":"ยังไม่ได้ระบุ",
+    "ยาว":"ยังไม่ได้ระบุ",
+    "สี":"ยังไม่ได้ระบุ"
+  },
+  "JROOF": {
+    "กว้าง":"ยังไม่ได้ระบุ",
+    "ยาว":"ยังไม่ได้ระบุ",
+    "สี":"ยังไม่ได้ระบุ"
+  },
+  "Mini Gold": {
+    "กว้าง":"105 ซม.",
+    "ยาว":"3 / 4 / 5 / 6 / 9 / 12 ม.",
+    "ความสูงลอน":"11 มม.",
+    "ความลาดชันขั้นต่ำ":"5 องศา",
+    "ระยะแป":"ไม่เกิน 100 ซม.",
+    "ป้องกัน UV":"UVIC / UVAS บล็อก UV ได้สูงสุด 99%"
+  },
+  "D-Line": {
+    "กว้าง":"ยังไม่ได้ระบุ",
+    "ยาว":"ยังไม่ได้ระบุ",
+    "สี":"ยังไม่ได้ระบุ"
+  },
+  "โพลีคาร์บอเนต": {
+    "กว้าง":"ยังไม่ได้ระบุ",
+    "ยาว":"ยังไม่ได้ระบุ",
+    "สี":"ยังไม่ได้ระบุ"
+  }
+};
+
+function renderSpecText(title){
+  const s=productSpecs[title]||{};
+  const rows=Object.entries(s);
+  if(!rows.length)return "";
+  return `<div class="photo-spec">${rows.map(([k,v])=>`
+    <div class="spec-row"><span class="spec-key">${k}</span><span class="spec-value">${v}</span></div>
+  `).join("")}</div>`;
+}
+
+
+async function openProductDetail(productIndex){
+  const p=products[productIndex];
+  if(!p)return;
+  const imgs=await get("p"+productIndex)||[];
+  document.getElementById("detailTitle").textContent=p[1];
+  const spec=productSpecs[p[1]]||{};
+  document.getElementById("detailSpecs").innerHTML=Object.entries(spec).length
+    ? Object.entries(spec).map(([k,v])=>`<div class="detail-spec-row"><span class="detail-spec-key">${k}</span><span class="detail-spec-value">${v}</span></div>`).join("")
+    : `<div style="color:#718092">ยังไม่มีรายละเอียดสินค้า</div>`;
+  const grid=document.getElementById("detailImages");
+  grid.innerHTML=imgs.length
+    ? imgs.map((src,i)=>`<div class="detail-image" onclick="openProductBigImage(${productIndex},${i})"><img src="${src}" alt="${p[1]} รูปที่ ${i+1}"></div>`).join("")
+    : `<div class="detail-empty" style="grid-column:1/-1">ยังไม่มีรูปสินค้า</div>`;
+  document.getElementById("productDetailPage").classList.add("show");
+  document.getElementById("productPage").classList.remove("show");
+  window.scrollTo(0,0);
+}
+function closeProductDetail(){
+  document.getElementById("productDetailPage").classList.remove("show");
+}
+
+</script>
+</body>
+</html>

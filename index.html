@@ -404,6 +404,14 @@ header nav button:hover{
 .price-btn{background:#ffd33d !important;color:#111 !important}
 .detail-btn{background:#0b3568 !important;color:#fff !important}
 
+
+header nav button{
+  cursor:pointer !important;
+  pointer-events:auto !important;
+  position:relative !important;
+  z-index:30 !important;
+}
+
 </style>
 </head>
 <body>
@@ -734,6 +742,27 @@ document.addEventListener("DOMContentLoaded",()=>{
     });
   });
 });
+</script>
+
+
+<script>
+function go(sectionId){
+  const el=document.getElementById(sectionId);
+  if(!el) return;
+  const header=document.querySelector("header");
+  const offset=header ? header.offsetHeight + 12 : 12;
+  const y=el.getBoundingClientRect().top + window.pageYOffset - offset;
+  window.scrollTo({top:Math.max(0,y),behavior:"smooth"});
+}
+function toggleAdmin(){
+  const el=document.getElementById("admin");
+  if(!el) return;
+  const hidden=getComputedStyle(el).display==="none";
+  el.style.display=hidden ? "block" : "none";
+  if(hidden){
+    setTimeout(()=>el.scrollIntoView({behavior:"smooth",block:"start"}),50);
+  }
+}
 </script>
 
 </body>

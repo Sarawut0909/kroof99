@@ -94,6 +94,64 @@ header nav button:hover{
 .card .pic{cursor:pointer}
 .service .pic{cursor:pointer}
 
+
+.folder-box{max-width:1100px;width:96vw}
+.folder-label{font-size:10px;letter-spacing:2px;color:#d6a83a;font-weight:900;margin-bottom:2px}
+.folder-content{background:#f4f6f8;padding:18px;max-height:78vh;overflow:auto}
+.folder-path{background:#fff;border:1px solid #dce3e9;border-radius:10px;padding:10px 14px;color:#40566b;font-weight:800;margin-bottom:14px}
+.folder-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.folder-item{background:#fff;border:1px solid #dce3e9;border-radius:12px;padding:7px;cursor:pointer;transition:.18s;box-shadow:0 3px 10px rgba(0,0,0,.05)}
+.folder-item:hover{transform:translateY(-3px);border-color:#d6a83a;box-shadow:0 8px 20px rgba(0,0,0,.12)}
+.folder-item img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:8px;display:block}
+.folder-item .filename{font-size:12px;color:#526477;padding:8px 3px 3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.image-lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.94);z-index:200;align-items:center;justify-content:center;padding:55px 70px}
+.image-lightbox.show{display:flex}
+.image-lightbox>img{max-width:92vw;max-height:82vh;object-fit:contain;border-radius:6px}
+.lightbox-close{position:absolute;right:18px;top:15px;width:42px;height:42px;border:0;border-radius:50%;background:#fff;color:#111;font-size:28px;cursor:pointer}
+.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);width:50px;height:50px;border:0;border-radius:50%;background:rgba(255,255,255,.9);color:#082b55;font-size:34px;cursor:pointer}
+.lightbox-prev{left:18px}.lightbox-next{right:18px}
+.lightbox-caption{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.65);color:#fff;padding:7px 14px;border-radius:20px;font-size:13px;max-width:80%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:800px){.folder-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:560px){.folder-grid{grid-template-columns:repeat(2,1fr)}.image-lightbox{padding:45px 48px}.lightbox-nav{width:40px;height:40px;font-size:27px}.lightbox-prev{left:7px}.lightbox-next{right:7px}}
+
+
+.product-page{
+  position:fixed;inset:0;background:#f4f6f8;z-index:150;
+  display:none;overflow:auto;
+}
+.product-page.show{display:block}
+.product-page-head{
+  position:sticky;top:0;z-index:3;background:#000;color:#fff;
+  display:flex;align-items:center;gap:14px;padding:14px 22px;
+  box-shadow:0 2px 12px rgba(0,0,0,.2)
+}
+.product-back{
+  border:1px solid #555;background:#111;color:#fff;border-radius:9px;
+  padding:9px 15px;font-weight:800;cursor:pointer
+}
+.product-page-title{font-size:22px;font-weight:900}
+.product-page-body{max-width:1200px;margin:auto;padding:28px 20px 60px}
+.product-folder{
+  background:#fff;border:1px solid #dde3e8;border-radius:14px;
+  padding:14px 18px;margin-bottom:20px;font-weight:800;color:#45596b
+}
+.product-gallery{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:16px
+}
+.product-photo{
+  background:#fff;border:1px solid #dce3e9;border-radius:14px;padding:8px;
+  cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.06);transition:.18s
+}
+.product-photo:hover{transform:translateY(-3px);box-shadow:0 10px 22px rgba(0,0,0,.13);border-color:#d6a83a}
+.product-photo img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:9px;display:block}
+.product-photo-name{padding:9px 4px 3px;font-size:13px;color:#526477;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.product-no-image{
+  grid-column:1/-1;background:#fff;border:2px dashed #ccd5dd;border-radius:14px;
+  padding:55px 20px;text-align:center;color:#718092
+}
+@media(max-width:900px){.product-gallery{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){.product-gallery{grid-template-columns:repeat(2,1fr)}.product-page-title{font-size:18px}}
+
 </style>
 </head>
 <body>
@@ -143,14 +201,46 @@ header nav button:hover{
 <p id="adminMsg" class="note"></p>
 </div></section>
 
-<div class="gallery-modal" id="galleryModal" onclick="if(event.target===this)closeGallery()">
-  <div class="gallery-box">
-    <div class="gallery-top"><h3 id="galleryTitle">รูปภาพ</h3><button class="gallery-close" onclick="closeGallery()">×</button></div>
-    <div class="gallery-main" id="galleryMain"></div>
-    <div class="gallery-thumbs" id="galleryThumbs"></div>
+
+
+<div class="product-page" id="productPage">
+  <div class="product-page-head">
+    <button class="product-back" onclick="closeProductPage()">← กลับ</button>
+    <div class="product-page-title" id="productPageTitle">สินค้า</div>
+  </div>
+  <div class="product-page-body">
+    <div class="product-folder">📁 <span id="productFolderText">โฟลเดอร์สินค้า</span></div>
+    <div class="product-gallery" id="productPageGallery"></div>
   </div>
 </div>
 
+<div class="gallery-modal" id="galleryModal" onclick="if(event.target===this)closeGallery()">
+  <div class="gallery-box folder-box">
+    <div class="gallery-top">
+      <div>
+        <div class="folder-label">K-ROOF GALLERY</div>
+        <h3 id="galleryTitle">รูปภาพ</h3>
+      </div>
+      <button class="gallery-close" onclick="closeGallery()">×</button>
+    </div>
+    <div class="folder-content">
+      <div class="folder-path">📁 <span id="galleryFolderName">โฟลเดอร์รูปภาพ</span></div>
+      <div class="folder-grid" id="galleryThumbs"></div>
+      <div class="gallery-empty" id="galleryEmpty" style="display:none">
+        ยังไม่มีรูปในโฟลเดอร์นี้<br>
+        สามารถเพิ่มรูปได้จากเมนู “จัดการรูป”
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="image-lightbox" id="imageLightbox" onclick="if(event.target===this)closeImageLightbox()">
+  <button class="lightbox-close" onclick="closeImageLightbox()">×</button>
+  <button class="lightbox-nav lightbox-prev" onclick="changeGallery(-1)">‹</button>
+  <img id="lightboxImage" src="" alt="">
+  <button class="lightbox-nav lightbox-next" onclick="changeGallery(1)">›</button>
+  <div class="lightbox-caption" id="lightboxCaption"></div>
+</div>
 <footer>K-Roof หลังคาเครูฟ • จำหน่ายแผ่นหลังคาและรับติดตั้ง</footer>
 
 <script>
@@ -181,44 +271,93 @@ async function saveServiceImages(){let k=document.getElementById("serviceSelect"
 function msg(t){document.getElementById("adminMsg").textContent=t}
 fillSelects();render();renderServiceImages();
 
-let galleryImages=[], galleryIndex=0;
+
+let galleryImages=[], galleryIndex=0, galleryTitle="";
 async function openGallery(key,title){
   galleryImages=await get(key)||[];
   galleryIndex=0;
+  galleryTitle=title;
   document.getElementById("galleryTitle").textContent=title;
+  document.getElementById("galleryFolderName").textContent=title;
   document.getElementById("galleryModal").classList.add("show");
-  renderGallery();
+  renderFolderGallery();
 }
 function closeGallery(){document.getElementById("galleryModal").classList.remove("show")}
-function renderGallery(){
-  const main=document.getElementById("galleryMain"), thumbs=document.getElementById("galleryThumbs");
+function renderFolderGallery(){
+  const grid=document.getElementById("galleryThumbs");
+  const empty=document.getElementById("galleryEmpty");
   if(!galleryImages.length){
-    main.innerHTML='<div class="gallery-empty">ยังไม่มีรูปสำหรับหัวข้อนี้<br>สามารถเพิ่มได้จากเมนู “จัดการรูป”</div>';
-    thumbs.innerHTML='';
+    grid.innerHTML="";
+    empty.style.display="block";
     return;
   }
-  main.innerHTML=`<img src="${galleryImages[galleryIndex]}" alt="">`+
-    `<button class="gallery-nav gallery-prev" onclick="event.stopPropagation();changeGallery(-1)">‹</button>`+
-    `<button class="gallery-nav gallery-next" onclick="event.stopPropagation();changeGallery(1)">›</button>`;
-  thumbs.innerHTML=galleryImages.map((x,i)=>`<button class="gallery-thumb ${i===galleryIndex?'active':''}" onclick="event.stopPropagation();galleryIndex=${i};renderGallery()"><img src="${x}" alt=""></button>`).join("");
+  empty.style.display="none";
+  grid.innerHTML=galleryImages.map((src,i)=>`
+    <div class="folder-item" onclick="openImageLightbox(${i})">
+      <img src="${src}" alt="${galleryTitle} รูปที่ ${i+1}">
+      <div class="filename">รูปที่ ${i+1}</div>
+    </div>`).join("");
+}
+function openImageLightbox(index){
+  galleryIndex=index;
+  renderLightbox();
+  document.getElementById("imageLightbox").classList.add("show");
+}
+function closeImageLightbox(){document.getElementById("imageLightbox").classList.remove("show")}
+function renderLightbox(){
+  if(!galleryImages.length)return;
+  document.getElementById("lightboxImage").src=galleryImages[galleryIndex];
+  document.getElementById("lightboxCaption").textContent=`${galleryTitle} — รูปที่ ${galleryIndex+1} / ${galleryImages.length}`;
 }
 function changeGallery(step){
   if(!galleryImages.length)return;
   galleryIndex=(galleryIndex+step+galleryImages.length)%galleryImages.length;
-  renderGallery();
-}
-async function renderServiceImages(){
-  for(const k of ["car1","car2","car3","car4","awning","roof"]){
-    const imgs=await get("s"+k)||[];
-    const el=document.getElementById("spic-"+k);
-    if(el && imgs.length) el.innerHTML=`<img src="${imgs[0]}" alt="">`;
-  }
+  renderLightbox();
 }
 document.addEventListener("keydown",e=>{
-  if(e.key==="Escape")closeGallery();
+  if(e.key==="Escape"){
+    if(document.getElementById("imageLightbox").classList.contains("show")) closeImageLightbox();
+    else closeGallery();
+  }
   if(e.key==="ArrowLeft")changeGallery(-1);
   if(e.key==="ArrowRight")changeGallery(1);
 });
+
+
+async function openProductPage(index){
+  const p=products[index];
+  if(!p)return;
+  const imgs=await get("p"+index)||[];
+  document.getElementById("productPageTitle").textContent=p[1];
+  document.getElementById("productFolderText").textContent=p[1];
+  const grid=document.getElementById("productPageGallery");
+  if(!imgs.length){
+    grid.innerHTML=`<div class="product-no-image">
+      <div style="font-size:42px;margin-bottom:10px">📁</div>
+      <b>ยังไม่มีรูปของ ${p[1]}</b><br>
+      <span>เพิ่มรูปหลายรูปได้จากเมนู “จัดการรูป”</span>
+    </div>`;
+  }else{
+    grid.innerHTML=imgs.map((src,i)=>`
+      <div class="product-photo" onclick="openProductBigImage(${index},${i})">
+        <img src="${src}" alt="${p[1]} รูปที่ ${i+1}">
+        <div class="product-photo-name">รูปที่ ${i+1}</div>
+      </div>`).join("");
+  }
+  document.getElementById("productPage").classList.add("show");
+  window.scrollTo(0,0);
+}
+function closeProductPage(){
+  document.getElementById("productPage").classList.remove("show");
+}
+async function openProductBigImage(productIndex,imageIndex){
+  const imgs=await get("p"+productIndex)||[];
+  galleryImages=imgs;
+  galleryIndex=imageIndex;
+  galleryTitle=products[productIndex][1];
+  renderLightbox();
+  document.getElementById("imageLightbox").classList.add("show");
+}
 
 </script>
 </body>

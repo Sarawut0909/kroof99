@@ -76,6 +76,24 @@ header nav button:hover{
   color:#fff !important;
 }
 
+
+.gallery-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.82);z-index:100;align-items:center;justify-content:center;padding:18px}
+.gallery-modal.show{display:flex}
+.gallery-box{width:min(1000px,96vw);max-height:94vh;background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.4);position:relative}
+.gallery-top{padding:15px 20px;background:#082b55;color:#fff;display:flex;justify-content:space-between;align-items:center}
+.gallery-top h3{margin:0;font-size:20px}
+.gallery-close{border:0;background:#fff;color:#082b55;border-radius:50%;width:36px;height:36px;font-size:22px;cursor:pointer}
+.gallery-main{background:#101820;min-height:420px;display:flex;align-items:center;justify-content:center;position:relative}
+.gallery-main img{max-width:100%;max-height:62vh;object-fit:contain;display:block}
+.gallery-nav{position:absolute;top:50%;transform:translateY(-50%);border:0;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.9);color:#082b55;font-size:26px;cursor:pointer}
+.gallery-prev{left:14px}.gallery-next{right:14px}
+.gallery-thumbs{display:flex;gap:10px;overflow-x:auto;padding:13px;background:#f3f6f9}
+.gallery-thumb{width:78px;height:58px;flex:0 0 auto;border:2px solid transparent;border-radius:8px;overflow:hidden;background:#ddd;cursor:pointer}
+.gallery-thumb.active{border-color:#d6a83a}.gallery-thumb img{width:100%;height:100%;object-fit:cover}
+.gallery-empty{text-align:center;color:#64748b;padding:55px 20px;font-weight:700}
+.card .pic{cursor:pointer}
+.service .pic{cursor:pointer}
+
 </style>
 </head>
 <body>
@@ -100,13 +118,13 @@ header nav button:hover{
 </div>
 <div class="tabs" id="tabs"></div><div class="grid" id="productGrid"></div></section>
 
-<section id="services"><h2>บริการของ K-Roof</h2><p style="color:#64748b;margin-top:-12px;margin-bottom:24px">เลือกรูปแบบงานที่สนใจ แล้วค่อยเพิ่มรูปผลงานจริงของร้านภายหลังได้</p><div class="service">
-<div class="card"><div class="pic"><div class="placeholder">เพิ่มรูปโรงจอดรถ 1 คันภายหลัง</div></div><div class="card-body"><h3>โรงจอดรถ 1 คัน</h3><span class="tag">มีแบบให้เลือก</span></div></div>
-<div class="card"><div class="pic"><div class="placeholder">เพิ่มรูปโรงจอดรถ 2 คันภายหลัง</div></div><div class="card-body"><h3>โรงจอดรถ 2 คัน</h3><span class="tag">มีแบบให้เลือก</span></div></div>
-<div class="card"><div class="pic"><div class="placeholder">เพิ่มรูปโรงจอดรถ 3 คันภายหลัง</div></div><div class="card-body"><h3>โรงจอดรถ 3 คัน</h3><span class="tag">มีแบบให้เลือก</span></div></div>
-<div class="card"><div class="pic"><div class="placeholder">เพิ่มรูปโรงจอดรถ 4 คัน / รูฟ</div></div><div class="card-body"><h3>โรงจอดรถ 4 คัน + รูฟ</h3><span class="tag">มีแบบให้เลือก</span></div></div>
-<div class="card"><div class="pic"><div class="placeholder">เพิ่มรูปกันสาดภายหลัง</div></div><div class="card-body"><h3>กันสาด</h3><span class="tag">ดูผลงานจริง</span></div></div>
-<div class="card"><div class="pic"><div class="placeholder">เพิ่มรูปงานหลังคาภายหลัง</div></div><div class="card-body"><h3>ทำหลังคา</h3><span class="tag">รับติดตั้ง</span></div></div>
+<section id="services"><h2>บริการของ K-Roof</h2><p style="color:#64748b;margin-top:-12px;margin-bottom:24px">เลือกรูปแบบงานที่สนใจ แล้วกดดูรูปผลงานได้หลายรูป</p><div class="service" id="serviceGrid">
+<div class="card" onclick="openGallery('s:car1','โรงจอดรถ 1 คัน')"><div class="pic" id="spic-car1"><div class="placeholder">เพิ่มรูปโรงจอดรถ 1 คัน<br><b>คลิกเพื่อดูหลายรูป</b></div></div><div class="card-body"><h3>โรงจอดรถ 1 คัน</h3><span class="tag">มีแบบให้เลือก</span></div></div>
+<div class="card" onclick="openGallery('s:car2','โรงจอดรถ 2 คัน')"><div class="pic" id="spic-car2"><div class="placeholder">เพิ่มรูปโรงจอดรถ 2 คัน<br><b>คลิกเพื่อดูหลายรูป</b></div></div><div class="card-body"><h3>โรงจอดรถ 2 คัน</h3><span class="tag">มีแบบให้เลือก</span></div></div>
+<div class="card" onclick="openGallery('s:car3','โรงจอดรถ 3 คัน')"><div class="pic" id="spic-car3"><div class="placeholder">เพิ่มรูปโรงจอดรถ 3 คัน<br><b>คลิกเพื่อดูหลายรูป</b></div></div><div class="card-body"><h3>โรงจอดรถ 3 คัน</h3><span class="tag">มีแบบให้เลือก</span></div></div>
+<div class="card" onclick="openGallery('s:car4','โรงจอดรถ 4 คัน + รูฟ')"><div class="pic" id="spic-car4"><div class="placeholder">เพิ่มรูปโรงจอดรถ 4 คัน / รูฟ<br><b>คลิกเพื่อดูหลายรูป</b></div></div><div class="card-body"><h3>โรงจอดรถ 4 คัน + รูฟ</h3><span class="tag">มีแบบให้เลือก</span></div></div>
+<div class="card" onclick="openGallery('s:awning','กันสาด')"><div class="pic" id="spic-awning"><div class="placeholder">เพิ่มรูปกันสาด<br><b>คลิกเพื่อดูหลายรูป</b></div></div><div class="card-body"><h3>กันสาด</h3><span class="tag">ดูผลงานจริง</span></div></div>
+<div class="card" onclick="openGallery('s:roof','ทำหลังคา')"><div class="pic" id="spic-roof"><div class="placeholder">เพิ่มรูปงานหลังคา<br><b>คลิกเพื่อดูหลายรูป</b></div></div><div class="card-body"><h3>ทำหลังคา</h3><span class="tag">รับติดตั้ง</span></div></div>
 </div></section>
 
 <section class="contact" id="contact"><h2>ติดต่อ K-Roof</h2><div class="contact-box">
@@ -124,6 +142,15 @@ header nav button:hover{
 </div>
 <p id="adminMsg" class="note"></p>
 </div></section>
+
+<div class="gallery-modal" id="galleryModal" onclick="if(event.target===this)closeGallery()">
+  <div class="gallery-box">
+    <div class="gallery-top"><h3 id="galleryTitle">รูปภาพ</h3><button class="gallery-close" onclick="closeGallery()">×</button></div>
+    <div class="gallery-main" id="galleryMain"></div>
+    <div class="gallery-thumbs" id="galleryThumbs"></div>
+  </div>
+</div>
+
 <footer>K-Roof หลังคาเครูฟ • จำหน่ายแผ่นหลังคาและรับติดตั้ง</footer>
 
 <script>
@@ -144,15 +171,55 @@ function renderTabs(){document.getElementById("tabs").innerHTML=Object.entries(c
 async function render(){
 renderTabs();let arr=products.filter(p=>current==="all"||p[0]===current);let grid=document.getElementById("productGrid");grid.innerHTML="";
 for(let i=0;i<arr.length;i++){let p=arr[i],idx=products.indexOf(p),imgs=await get("p"+idx)||[];let img=imgs[0];
-let c=document.createElement("div");c.className="card";c.innerHTML=`<div class="pic">${img?`<img src="${img}" alt="${p[1]}">`:`<div class="placeholder">ยังไม่มีรูป<br><b>เพิ่มได้ภายหลัง</b></div>`}</div><div class="card-body"><span class="tag">${p[2]}</span><h3>${p[1]}</h3><div class="actions"><a class="btn small primary" href="https://lin.ee/ONjTmCS" target="_blank">สอบถามราคา</a><a class="btn small" href="tel:0927968777">โทร</a></div></div>`;grid.appendChild(c)}
+let c=document.createElement("div");c.className="card";c.onclick=()=>openGallery("p"+idx,p[1]);c.innerHTML=`<div class="pic">${img?`<img src="${img}" alt="${p[1]}">`:`<div class="placeholder">ยังไม่มีรูป<br><b>เพิ่มได้ภายหลัง</b></div>`}</div><div class="card-body"><span class="tag">${p[2]}</span><h3>${p[1]}</h3><div class="actions"><a class="btn small primary" href="https://lin.ee/ONjTmCS" target="_blank">สอบถามราคา</a><a class="btn small" href="tel:0927968777">โทร</a></div></div>`;grid.appendChild(c)}
 }
 function filter(k){current=k;render()}
 function fillSelects(){document.getElementById("productSelect").innerHTML=products.map((p,i)=>`<option value="${i}">${p[1]} — ${p[2]}</option>`).join("")}
 async function filesToData(files){return Promise.all([...files].map(f=>new Promise((res,rej)=>{let r=new FileReader();r.onload=()=>res(r.result);r.onerror=rej;r.readAsDataURL(f)})))}
 async function saveProductImages(){let i=document.getElementById("productSelect").value,fs=document.getElementById("productImage").files;if(!fs.length)return msg("กรุณาเลือกรูปสินค้า");await put("p"+i,await filesToData(fs));document.getElementById("productImage").value="";msg("บันทึกรูปสินค้าแล้ว");render()}
-async function saveServiceImages(){let k=document.getElementById("serviceSelect").value,fs=document.getElementById("serviceImage").files;if(!fs.length)return msg("กรุณาเลือกรูปบริการ");await put("s"+k,await filesToData(fs));document.getElementById("serviceImage").value="";msg("บันทึกรูปบริการแล้ว (โครงสร้างช่องบริการพร้อมต่อยอดให้แสดงแกลเลอรีได้)")}
+async function saveServiceImages(){let k=document.getElementById("serviceSelect").value,fs=document.getElementById("serviceImage").files;if(!fs.length)return msg("กรุณาเลือกรูปบริการ");await put("s"+k,await filesToData(fs));document.getElementById("serviceImage").value="";msg("บันทึกรูปบริการแล้ว");renderServiceImages()}
 function msg(t){document.getElementById("adminMsg").textContent=t}
-fillSelects();render();
+fillSelects();render();renderServiceImages();
+
+let galleryImages=[], galleryIndex=0;
+async function openGallery(key,title){
+  galleryImages=await get(key)||[];
+  galleryIndex=0;
+  document.getElementById("galleryTitle").textContent=title;
+  document.getElementById("galleryModal").classList.add("show");
+  renderGallery();
+}
+function closeGallery(){document.getElementById("galleryModal").classList.remove("show")}
+function renderGallery(){
+  const main=document.getElementById("galleryMain"), thumbs=document.getElementById("galleryThumbs");
+  if(!galleryImages.length){
+    main.innerHTML='<div class="gallery-empty">ยังไม่มีรูปสำหรับหัวข้อนี้<br>สามารถเพิ่มได้จากเมนู “จัดการรูป”</div>';
+    thumbs.innerHTML='';
+    return;
+  }
+  main.innerHTML=`<img src="${galleryImages[galleryIndex]}" alt="">`+
+    `<button class="gallery-nav gallery-prev" onclick="event.stopPropagation();changeGallery(-1)">‹</button>`+
+    `<button class="gallery-nav gallery-next" onclick="event.stopPropagation();changeGallery(1)">›</button>`;
+  thumbs.innerHTML=galleryImages.map((x,i)=>`<button class="gallery-thumb ${i===galleryIndex?'active':''}" onclick="event.stopPropagation();galleryIndex=${i};renderGallery()"><img src="${x}" alt=""></button>`).join("");
+}
+function changeGallery(step){
+  if(!galleryImages.length)return;
+  galleryIndex=(galleryIndex+step+galleryImages.length)%galleryImages.length;
+  renderGallery();
+}
+async function renderServiceImages(){
+  for(const k of ["car1","car2","car3","car4","awning","roof"]){
+    const imgs=await get("s"+k)||[];
+    const el=document.getElementById("spic-"+k);
+    if(el && imgs.length) el.innerHTML=`<img src="${imgs[0]}" alt="">`;
+  }
+}
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape")closeGallery();
+  if(e.key==="ArrowLeft")changeGallery(-1);
+  if(e.key==="ArrowRight")changeGallery(1);
+});
+
 </script>
 </body>
 </html>

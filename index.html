@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>K-Roof | หลังคาเครูฟ</title>
+<style>
+:root{--navy:#082b55;--blue:#0b4d8d;--gold:#d6a83a;--bg:#f5f7fa;--text:#17202a}
+*{box-sizing:border-box} body{margin:0;font-family:Arial,"Noto Sans Thai",sans-serif;background:var(--bg);color:var(--text)}
+header{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid #ddd}
+.nav{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:12px 18px;gap:15px}
+.logo{font-weight:900;font-size:25px;color:var(--navy)} .logo small{display:block;font-size:12px;font-weight:600}
+nav{display:flex;gap:8px;flex-wrap:wrap} nav button{border:0;background:#eef3f8;padding:10px 14px;border-radius:20px;font-weight:700;cursor:pointer}
+nav button:hover{background:#dce9f5}
+.hero{background:linear-gradient(135deg,#06284d,#0b5795);color:#fff;padding:65px 18px}
+.hero-in{max-width:1200px;margin:auto;display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:center}
+.hero h1{font-size:clamp(38px,6vw,70px);margin:0 0 12px}.hero p{font-size:20px;line-height:1.6}
+.cta{display:flex;gap:10px;flex-wrap:wrap}.btn{display:inline-block;padding:13px 20px;border-radius:12px;text-decoration:none;font-weight:800;border:0;cursor:pointer}.primary{background:#ffd43b;color:#17202a}.light{background:#fff;color:var(--navy)}
+.hero-card{background:rgba(255,255,255,.12);padding:25px;border-radius:22px;border:1px solid rgba(255,255,255,.2)}
+section{max-width:1200px;margin:auto;padding:50px 18px} h2{font-size:32px;margin:0 0 24px;color:var(--navy)}
+.tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px}.tab{padding:10px 16px;border-radius:999px;border:1px solid #ccd7e3;background:#fff;cursor:pointer;font-weight:700}.tab.active{background:var(--navy);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 5px 20px rgba(0,0,0,.07);border:1px solid #e1e7ee}
+.pic{aspect-ratio:4/3;background:#e9eef4;display:flex;align-items:center;justify-content:center;overflow:hidden}.pic img{width:100%;height:100%;object-fit:cover}.placeholder{color:#718096;text-align:center;padding:20px}
+.card-body{padding:17px}.card h3{margin:0 0 7px;font-size:20px}.tag{display:inline-block;background:#e8f1fb;color:#174f82;padding:5px 9px;border-radius:8px;font-size:12px;font-weight:700}
+.card .actions{display:flex;gap:8px;margin-top:14px}.small{padding:9px 12px;border-radius:9px;font-size:13px}
+.service{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.service .card{padding-bottom:10px}
+.contact{background:var(--navy);color:#fff}.contact h2{color:#fff}.contact-box{display:grid;grid-template-columns:1fr 1fr;gap:20px}.contact a{color:#fff}.contact-item{background:rgba(255,255,255,.08);padding:20px;border-radius:15px}
+footer{background:#061d38;color:#fff;text-align:center;padding:22px}
+#admin{display:none;background:#fff0d8;border-top:1px solid #e7c98d}.admin-inner{max-width:1200px;margin:auto;padding:25px 18px}.admin-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.admin-box{background:#fff;padding:16px;border-radius:14px;border:1px solid #e3d4b5}.admin-box input,.admin-box select,.admin-box textarea{width:100%;padding:10px;margin:7px 0;border:1px solid #ccd3db;border-radius:8px}.note{font-size:13px;color:#665a43;line-height:1.5}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.service{grid-template-columns:repeat(2,1fr)}.hero-in{grid-template-columns:1fr}.contact-box{grid-template-columns:1fr}}
+@media(max-width:560px){.grid,.service{grid-template-columns:1fr}.nav{align-items:flex-start;flex-direction:column}.hero{padding:45px 18px}.admin-row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div class="nav">
+<div class="logo">K-Roof<small>หลังคาเครูฟ</small></div>
+<nav>
+<button onclick="go('home')">หน้าแรก</button><button onclick="go('products')">สินค้า</button><button onclick="go('services')">บริการ</button><button onclick="go('contact')">ติดต่อ</button><button onclick="toggleAdmin()">จัดการรูป</button>
+</nav></div></header>
+
+<main id="home">
+<div class="hero"><div class="hero-in">
+<div><div class="tag">จำหน่ายแผ่นหลังคา • รับติดตั้ง</div><h1>K-Roof</h1><p>รวมแผ่นหลังคาไวนิล ไฟเบอร์กลาส โพลีคาร์บอเนต พร้อมบริการทำโรงจอดรถ กันสาด และงานหลังคา</p>
+<div class="cta"><a class="btn primary" href="#products">ดูสินค้า</a><a class="btn light" href="https://lin.ee/ONjTmCS" target="_blank">ติดต่อ LINE</a></div></div>
+<div class="hero-card"><h3>ติดต่อ K-Roof</h3><p>092-796-8777 (เค)<br>092-872-8174 (แก้ว)</p><p>เพิ่มรูปสินค้า/ผลงานภายหลังได้จากเมนู <b>จัดการรูป</b> โดยไม่ต้องแก้โค้ด</p></div>
+</div></div>
+
+<section id="products"><h2>สินค้าของเรา</h2>
+<div class="tabs" id="tabs"></div><div class="grid" id="productGrid"></div></section>
+
+<section id="services"><h2>บริการ</h2><div class="service">
+<div class="card"><div class="pic"><div class="placeholder">เพิ่มรูปโรงจอดรถ 1 คันภายหลัง</div></div><div class="card-body"><h3>โรงจอดรถ 1 คัน</h3><span class="tag">มีแบบให้เลือก</span></div></div>
+<div class="card"><div class="pic"><div class="placeholder">เพิ่มรูปโรงจอดรถ 2 คันภายหลัง</div></div><div class="card-body"><h3>โรงจอดรถ 2 คัน</h3><span class="tag">มีแบบให้เลือก</span></div></div>
+<div class="card"><div class="pic"><div class="placeholder">เพิ่มรูปโรงจอดรถ 3 คันภายหลัง</div></div><div class="card-body"><h3>โรงจอดรถ 3 คัน</h3><span class="tag">มีแบบให้เลือก</span></div></div>
+<div class="card"><div class="pic"><div class="placeholder">เพิ่มรูปโรงจอดรถ 4 คัน / รูฟ</div></div><div class="card-body"><h3>โรงจอดรถ 4 คัน + รูฟ</h3><span class="tag">มีแบบให้เลือก</span></div></div>
+<div class="card"><div class="pic"><div class="placeholder">เพิ่มรูปกันสาดภายหลัง</div></div><div class="card-body"><h3>กันสาด</h3><span class="tag">ดูผลงานจริง</span></div></div>
+<div class="card"><div class="pic"><div class="placeholder">เพิ่มรูปงานหลังคาภายหลัง</div></div><div class="card-body"><h3>ทำหลังคา</h3><span class="tag">รับติดตั้ง</span></div></div>
+</div></section>
+
+<section class="contact" id="contact"><h2>ติดต่อ K-Roof</h2><div class="contact-box">
+<div class="contact-item"><h3>โทร</h3><p><a href="tel:0927968777">092-796-8777 (เค)</a><br><a href="tel:0928728174">092-872-8174 (แก้ว)</a></p></div>
+<div class="contact-item"><h3>LINE</h3><p><a href="https://lin.ee/ONjTmCS" target="_blank">แชทกับ K-Roof ทาง LINE</a></p></div>
+</div></section>
+</main>
+
+<section id="admin">
+<div class="admin-inner"><h2>จัดการรูปสินค้า / รูปผลงาน</h2>
+<p class="note">เว็บนี้ทำงานออฟไลน์ได้ รูปที่เลือกจะถูกเก็บไว้ในเบราว์เซอร์เครื่องนี้ด้วย IndexedDB จึงสามารถเพิ่ม/เปลี่ยนรูปภายหลังโดยไม่ต้องแก้ HTML ใหม่ หากล้างข้อมูลเว็บไซต์ของเบราว์เซอร์ รูปที่เก็บไว้ก็อาจหายได้</p>
+<div class="admin-row">
+<div class="admin-box"><h3>เพิ่มรูปให้สินค้า</h3><select id="productSelect"></select><input id="productImage" type="file" accept="image/*" multiple><button class="btn primary" onclick="saveProductImages()">บันทึกรูปสินค้า</button></div>
+<div class="admin-box"><h3>เพิ่มรูปให้บริการ</h3><select id="serviceSelect"><option value="car1">โรงจอดรถ 1 คัน</option><option value="car2">โรงจอดรถ 2 คัน</option><option value="car3">โรงจอดรถ 3 คัน</option><option value="car4">โรงจอดรถ 4 คัน + รูฟ</option><option value="awning">กันสาด</option><option value="roof">ทำหลังคา</option></select><input id="serviceImage" type="file" accept="image/*" multiple><button class="btn primary" onclick="saveServiceImages()">บันทึกรูปบริการ</button></div>
+</div>
+<p id="adminMsg" class="note"></p>
+</div></section>
+<footer>K-Roof หลังคาเครูฟ • จำหน่ายแผ่นหลังคาและรับติดตั้ง</footer>
+
+<script>
+const products=[
+["vinyl","VG Snow Roof","ไวนิล • VG"],["vinyl","VG Glacia","ไวนิล • VG"],["vinyl","VG Winter Roof","ไวนิล • VG"],["vinyl","VG Winter Plus","ไวนิล • VG"],
+["vinyl","RoofyRoof","ไวนิล"],["vinyl","ภูเขา PR4","ไวนิล • ตราภูเขา"],["vinyl","ภูเขา PR5","ไวนิล • ตราภูเขา"],["vinyl","ภูเขา PR8","ไวนิล • ตราภูเขา"],
+["fiber","JROOF","ไฟเบอร์กลาส"],["fiber","Mini Gold","ไฟเบอร์กลาส"],["fiber","D-Line","ไฟเบอร์กลาส"],["poly","โพลีคาร์บอเนต","แผ่นโปร่งแสง"]
+];
+const cats={all:"ทั้งหมด",vinyl:"แผ่นไวนิล",fiber:"แผ่นไฟเบอร์กลาส",poly:"แผ่นโพลีคาร์บอเนต"};
+let current="all";
+const DB_NAME="kroof_offline", DB_VER=1, STORE="images";
+function db(){return new Promise((res,rej)=>{let r=indexedDB.open(DB_NAME,DB_VER);r.onupgradeneeded=()=>r.result.createObjectStore(STORE);r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)})}
+async function put(key, value){let d=await db();return new Promise((res,rej)=>{let tx=d.transaction(STORE,"readwrite");tx.objectStore(STORE).put(value,key);tx.oncomplete=res;tx.onerror=()=>rej(tx.error)})}
+async function get(key){let d=await db();return new Promise((res,rej)=>{let r=d.transaction(STORE).objectStore(STORE).get(key);r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)})}
+function go(id){document.getElementById(id)?.scrollIntoView({behavior:"smooth"})}
+function toggleAdmin(){let x=document.getElementById("admin");x.style.display=x.style.display==="block"?"none":"block";if(x.style.display==="block")x.scrollIntoView({behavior:"smooth"});}
+function renderTabs(){document.getElementById("tabs").innerHTML=Object.entries(cats).map(([k,v])=>`<button class="tab ${k===current?"active":""}" onclick="filter('${k}')">${v}</button>`).join("")}
+async function render(){
+renderTabs();let arr=products.filter(p=>current==="all"||p[0]===current);let grid=document.getElementById("productGrid");grid.innerHTML="";
+for(let i=0;i<arr.length;i++){let p=arr[i],idx=products.indexOf(p),imgs=await get("p"+idx)||[];let img=imgs[0];
+let c=document.createElement("div");c.className="card";c.innerHTML=`<div class="pic">${img?`<img src="${img}" alt="${p[1]}">`:`<div class="placeholder">ยังไม่มีรูป<br><b>เพิ่มได้ภายหลัง</b></div>`}</div><div class="card-body"><span class="tag">${p[2]}</span><h3>${p[1]}</h3><div class="actions"><a class="btn small primary" href="https://lin.ee/ONjTmCS" target="_blank">สอบถามราคา</a><a class="btn small" href="tel:0927968777">โทร</a></div></div>`;grid.appendChild(c)}
+}
+function filter(k){current=k;render()}
+function fillSelects(){document.getElementById("productSelect").innerHTML=products.map((p,i)=>`<option value="${i}">${p[1]} — ${p[2]}</option>`).join("")}
+async function filesToData(files){return Promise.all([...files].map(f=>new Promise((res,rej)=>{let r=new FileReader();r.onload=()=>res(r.result);r.onerror=rej;r.readAsDataURL(f)})))}
+async function saveProductImages(){let i=document.getElementById("productSelect").value,fs=document.getElementById("productImage").files;if(!fs.length)return msg("กรุณาเลือกรูปสินค้า");await put("p"+i,await filesToData(fs));document.getElementById("productImage").value="";msg("บันทึกรูปสินค้าแล้ว");render()}
+async function saveServiceImages(){let k=document.getElementById("serviceSelect").value,fs=document.getElementById("serviceImage").files;if(!fs.length)return msg("กรุณาเลือกรูปบริการ");await put("s"+k,await filesToData(fs));document.getElementById("serviceImage").value="";msg("บันทึกรูปบริการแล้ว (โครงสร้างช่องบริการพร้อมต่อยอดให้แสดงแกลเลอรีได้)")}
+function msg(t){document.getElementById("adminMsg").textContent=t}
+fillSelects();render();
+</script>
+</body>
+</html>

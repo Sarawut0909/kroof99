@@ -33,12 +33,68 @@ footer{background:#061d38;color:#fff;text-align:center;padding:22px}
 .catalog-head{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:24px;padding:24px 26px;background:#fff;border-radius:22px;border:1px solid #e3e9ef;box-shadow:0 7px 25px rgba(8,43,85,.06)}
 .catalog-head h2{margin:3px 0 6px;font-size:34px}.catalog-head p{margin:0;color:#6b7785}
 .eyebrow{font-size:12px;font-weight:900;letter-spacing:2px;color:#b08421}
-.catalog-contact{white-space:nowrap;background:#082b55;color:#fff;padding:13px 18px;border-radius:12px;font-weight:800;text-decoration:none}
-
-
 .quickbar{max-width:1200px;margin:18px auto 0;padding:11px 18px;background:#082b55;color:#fff;border-radius:12px;display:flex;justify-content:space-between;align-items:center;font-size:14px}
 .quickbar a{color:#fff;background:#19b95b;padding:7px 12px;border-radius:8px;text-decoration:none;font-weight:800}
-@media(max-width:650px){.catalog-head{display:block}.catalog-contact{display:inline-block;margin-top:15px}.quickbar{margin:10px 12px 0;display:block}.quickbar a{display:inline-block;margin-top:7px}}
+@media(max-width:650px){.catalog-head{display:block}.quickbar{margin:10px 12px 0;display:block}.quickbar a{display:inline-block;margin-top:7px}}
+
+
+body{
+  background:
+    radial-gradient(circle at 8% 12%, rgba(245,196,61,.16), transparent 24%),
+    radial-gradient(circle at 92% 30%, rgba(31,126,190,.12), transparent 28%),
+    linear-gradient(180deg,#eef5fb 0%,#f8fafc 48%,#eef3f7 100%);
+}
+.header{
+  background:linear-gradient(90deg,#061f3e 0%,#0b4f8f 55%,#1269a8 100%);
+  border-bottom:3px solid #f2c230;
+}
+.nav{color:#fff}.logo{color:#fff}.logo small{color:#dbeafe}
+nav button{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.18)}
+nav button:hover{background:#f2c230;color:#082b55}
+.quickbar{
+  background:linear-gradient(90deg,#082b55,#0d5f9d);
+  border:1px solid rgba(255,255,255,.35);
+  box-shadow:0 8px 22px rgba(8,43,85,.18);
+}
+.catalog-head{
+  background:linear-gradient(135deg,#ffffff 0%,#edf6ff 58%,#fff8df 100%);
+  border-left:7px solid #0b5795;
+  box-shadow:0 10px 28px rgba(8,43,85,.10);
+}
+.catalog-head h2{color:#082b55}
+.eyebrow{color:#d08e00}
+.tabs{background:#e0edf8;padding:8px;border-radius:16px}
+.tab{background:#fff;border-color:#c5d9eb;color:#16466f}
+.tab.active{background:linear-gradient(135deg,#082b55,#0b65a5);color:#fff;border-color:#082b55;box-shadow:0 5px 12px rgba(8,43,85,.18)}
+.card{
+  border:1px solid #d6e3ef;
+  background:linear-gradient(180deg,#fff 0%,#f9fcff 100%);
+  box-shadow:0 9px 25px rgba(8,43,85,.09);
+}
+.card:nth-child(4n+1){border-top:4px solid #0b65a5}
+.card:nth-child(4n+2){border-top:4px solid #e4b52f}
+.card:nth-child(4n+3){border-top:4px solid #27a66f}
+.card:nth-child(4n){border-top:4px solid #8b6ac8}
+.pic{background:linear-gradient(135deg,#eaf3fb,#f8fbfd)}
+.tag{background:#e6f2ff;color:#07528d}
+.card h3{color:#163b60}
+.service .card{
+  background:linear-gradient(145deg,#fff,#f1f7fc);
+}
+.service .card:nth-child(1){background:linear-gradient(145deg,#fff,#eaf5ff)}
+.service .card:nth-child(2){background:linear-gradient(145deg,#fff,#fff7dc)}
+.service .card:nth-child(3){background:linear-gradient(145deg,#fff,#eafaf2)}
+.service .card:nth-child(4){background:linear-gradient(145deg,#fff,#f3edff)}
+.service .card:nth-child(5){background:linear-gradient(145deg,#fff,#fff0f3)}
+.service .card:nth-child(6){background:linear-gradient(145deg,#fff,#edf1ff)}
+.contact{
+  background:linear-gradient(135deg,#061f3e,#0a528f 65%,#1380b9);
+  box-shadow:0 12px 35px rgba(8,43,85,.22);
+}
+footer{background:linear-gradient(90deg,#061b34,#082b55);border-top:4px solid #f2c230}
+@media(max-width:650px){
+  .catalog-head{display:block}
+}
 
 </style>
 </head>
@@ -61,11 +117,10 @@ footer{background:#061d38;color:#fff;text-align:center;padding:22px}
     <h2>เลือกแผ่นหลังคาที่ต้องการ</h2>
     <p>รวมสินค้าแผ่นหลังคาหลายประเภท พร้อมดูรายละเอียดและเพิ่มรูปสินค้าได้ภายหลัง</p>
   </div>
-  <a class="catalog-contact" href="tel:0927968777"
 </div>
 <div class="tabs" id="tabs"></div><div class="grid" id="productGrid"></div></section>
 
-<section id="services"><h2>บริการของ K-Roof</h2><p style="color:#64748b;margin-top:-12px;margin-bottom:24px">เลือกรูปแบบงานที่สนใจ แล้วค่อยเพิ่มรูปผลงานจริงของร้านภายหลังได้</p><div class="service">
+<section id="services" style="position:relative"><h2>บริการของ K-Roof</h2><p style="color:#64748b;margin-top:-12px;margin-bottom:24px">เลือกรูปแบบงานที่สนใจ แล้วค่อยเพิ่มรูปผลงานจริงของร้านภายหลังได้</p><div class="service">
 <div class="card"><div class="pic"><div class="placeholder">เพิ่มรูปโรงจอดรถ 1 คันภายหลัง</div></div><div class="card-body"><h3>โรงจอดรถ 1 คัน</h3><span class="tag">มีแบบให้เลือก</span></div></div>
 <div class="card"><div class="pic"><div class="placeholder">เพิ่มรูปโรงจอดรถ 2 คันภายหลัง</div></div><div class="card-body"><h3>โรงจอดรถ 2 คัน</h3><span class="tag">มีแบบให้เลือก</span></div></div>
 <div class="card"><div class="pic"><div class="placeholder">เพิ่มรูปโรงจอดรถ 3 คันภายหลัง</div></div><div class="card-body"><h3>โรงจอดรถ 3 คัน</h3><span class="tag">มีแบบให้เลือก</span></div></div>

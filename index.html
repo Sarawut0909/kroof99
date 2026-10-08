@@ -17,7 +17,7 @@ nav button:hover{background:#dce9f5}
 .hero h1{font-size:clamp(38px,6vw,70px);margin:0 0 12px}.hero p{font-size:20px;line-height:1.6}
 .cta{display:flex;gap:10px;flex-wrap:wrap}.btn{display:inline-block;padding:13px 20px;border-radius:12px;text-decoration:none;font-weight:800;border:0;cursor:pointer}.primary{background:#ffd43b;color:#17202a}.light{background:#fff;color:var(--navy)}
 .hero-card{background:rgba(255,255,255,.12);padding:25px;border-radius:22px;border:1px solid rgba(255,255,255,.2)}
-section{max-width:1200px;margin:auto;padding:50px 18px} h2{font-size:32px;margin:0 0 24px;color:var(--navy)}
+section{max-width:1200px;margin:auto;padding:35px 18px} h2{font-size:32px;margin:0 0 24px;color:var(--navy)}
 .tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px}.tab{padding:10px 16px;border-radius:999px;border:1px solid #ccd7e3;background:#fff;cursor:pointer;font-weight:700}.tab.active{background:var(--navy);color:#fff}
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 5px 20px rgba(0,0,0,.07);border:1px solid #e1e7ee}
 .pic{aspect-ratio:4/3;background:#e9eef4;display:flex;align-items:center;justify-content:center;overflow:hidden}.pic img{width:100%;height:100%;object-fit:cover}.placeholder{color:#718096;text-align:center;padding:20px}
@@ -29,26 +29,43 @@ footer{background:#061d38;color:#fff;text-align:center;padding:22px}
 #admin{display:none;background:#fff0d8;border-top:1px solid #e7c98d}.admin-inner{max-width:1200px;margin:auto;padding:25px 18px}.admin-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.admin-box{background:#fff;padding:16px;border-radius:14px;border:1px solid #e3d4b5}.admin-box input,.admin-box select,.admin-box textarea{width:100%;padding:10px;margin:7px 0;border:1px solid #ccd3db;border-radius:8px}.note{font-size:13px;color:#665a43;line-height:1.5}
 @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.service{grid-template-columns:repeat(2,1fr)}.hero-in{grid-template-columns:1fr}.contact-box{grid-template-columns:1fr}}
 @media(max-width:560px){.grid,.service{grid-template-columns:1fr}.nav{align-items:flex-start;flex-direction:column}.hero{padding:45px 18px}.admin-row{grid-template-columns:1fr}}
+
+.catalog-head{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:24px;padding:24px 26px;background:#fff;border-radius:22px;border:1px solid #e3e9ef;box-shadow:0 7px 25px rgba(8,43,85,.06)}
+.catalog-head h2{margin:3px 0 6px;font-size:34px}.catalog-head p{margin:0;color:#6b7785}
+.eyebrow{font-size:12px;font-weight:900;letter-spacing:2px;color:#b08421}
+.catalog-contact{white-space:nowrap;background:#082b55;color:#fff;padding:13px 18px;border-radius:12px;font-weight:800;text-decoration:none}
+
+
+.quickbar{max-width:1200px;margin:18px auto 0;padding:11px 18px;background:#082b55;color:#fff;border-radius:12px;display:flex;justify-content:space-between;align-items:center;font-size:14px}
+.quickbar a{color:#fff;background:#19b95b;padding:7px 12px;border-radius:8px;text-decoration:none;font-weight:800}
+@media(max-width:650px){.catalog-head{display:block}.catalog-contact{display:inline-block;margin-top:15px}.quickbar{margin:10px 12px 0;display:block}.quickbar a{display:inline-block;margin-top:7px}}
+
 </style>
 </head>
 <body>
 <header><div class="nav">
-<div class="logo">K-Roof<small>หลังคาเครูฟ</small></div>
+<div class="logo">K-Roof<small>หลังคาเครูฟ • จำหน่ายและรับติดตั้ง</small></div>
 <nav>
 <button onclick="go('home')">หน้าแรก</button><button onclick="go('products')">สินค้า</button><button onclick="go('services')">บริการ</button><button onclick="go('contact')">ติดต่อ</button><button onclick="toggleAdmin()">จัดการรูป</button>
 </nav></div></header>
 
 <main id="home">
-<div class="hero"><div class="hero-in">
-<div><div class="tag">จำหน่ายแผ่นหลังคา • รับติดตั้ง</div><h1>K-Roof</h1><p>รวมแผ่นหลังคาไวนิล ไฟเบอร์กลาส โพลีคาร์บอเนต พร้อมบริการทำโรงจอดรถ กันสาด และงานหลังคา</p>
-<div class="cta"><a class="btn primary" href="#products">ดูสินค้า</a><a class="btn light" href="https://lin.ee/ONjTmCS" target="_blank">ติดต่อ LINE</a></div></div>
-<div class="hero-card"><h3>ติดต่อ K-Roof</h3><p>092-796-8777 (เค)<br>092-872-8174 (แก้ว)</p><p>เพิ่มรูปสินค้า/ผลงานภายหลังได้จากเมนู <b>จัดการรูป</b> โดยไม่ต้องแก้โค้ด</p></div>
-</div></div>
-
-<section id="products"><h2>สินค้าของเรา</h2>
+<div class="quickbar">
+  <div>📞 <b>092-796-8777</b> &nbsp; | &nbsp; <b>092-872-8174</b></div>
+  <a href="https://lin.ee/ONjTmCS" target="_blank">LINE: ติดต่อ K-Roof</a>
+</div>
+<section id="products">
+<div class="catalog-head">
+  <div>
+    <div class="eyebrow">K-ROOF CATALOG</div>
+    <h2>เลือกแผ่นหลังคาที่ต้องการ</h2>
+    <p>รวมสินค้าแผ่นหลังคาหลายประเภท พร้อมดูรายละเอียดและเพิ่มรูปสินค้าได้ภายหลัง</p>
+  </div>
+  <a class="catalog-contact" href="tel:0927968777">โทรสอบถาม 092-796-8777</a>
+</div>
 <div class="tabs" id="tabs"></div><div class="grid" id="productGrid"></div></section>
 
-<section id="services"><h2>บริการ</h2><div class="service">
+<section id="services"><h2>บริการของ K-Roof</h2><p style="color:#64748b;margin-top:-12px;margin-bottom:24px">เลือกรูปแบบงานที่สนใจ แล้วค่อยเพิ่มรูปผลงานจริงของร้านภายหลังได้</p><div class="service">
 <div class="card"><div class="pic"><div class="placeholder">เพิ่มรูปโรงจอดรถ 1 คันภายหลัง</div></div><div class="card-body"><h3>โรงจอดรถ 1 คัน</h3><span class="tag">มีแบบให้เลือก</span></div></div>
 <div class="card"><div class="pic"><div class="placeholder">เพิ่มรูปโรงจอดรถ 2 คันภายหลัง</div></div><div class="card-body"><h3>โรงจอดรถ 2 คัน</h3><span class="tag">มีแบบให้เลือก</span></div></div>
 <div class="card"><div class="pic"><div class="placeholder">เพิ่มรูปโรงจอดรถ 3 คันภายหลัง</div></div><div class="card-body"><h3>โรงจอดรถ 3 คัน</h3><span class="tag">มีแบบให้เลือก</span></div></div>

@@ -245,42 +245,45 @@ header nav button:hover{
 
 .main-layout{
   display:grid;
-  grid-template-columns:230px minmax(0,1fr);
+  grid-template-columns:250px minmax(0,1fr);
   gap:28px;
-  max-width:1500px;
+  max-width:1600px;
   margin:0 auto;
-  padding:28px 34px 60px;
+  padding:28px 38px 70px;
+  align-items:start;
 }
 .left-menu{
   position:sticky;
-  top:105px;
+  top:118px;
   align-self:start;
-  background:#fff;
-  border:1px solid #dfe5eb;
-  border-radius:16px;
+  background:#0b3568;
+  border:1px solid #0b3568;
+  border-radius:18px;
   padding:14px;
-  box-shadow:0 5px 18px rgba(0,0,0,.06);
+  color:#fff;
+  box-shadow:0 8px 22px rgba(0,0,0,.12);
+  z-index:5;
 }
 .left-menu-title{
-  font-size:13px;
+  color:#fff;
+  font-size:15px;
   font-weight:900;
-  letter-spacing:1.5px;
-  color:#9a6d00;
-  padding:8px 12px 12px;
-  border-bottom:1px solid #e9edf1;
+  letter-spacing:1.4px;
+  padding:11px 14px 15px;
+  border-bottom:1px solid rgba(255,255,255,.25);
 }
 .left-menu button{
   width:100%;
   display:block;
   text-align:left;
-  background:#fff;
+  background:transparent;
+  color:#fff;
   border:0;
-  border-radius:10px;
-  padding:13px 14px;
-  margin-top:6px;
-  color:#122c49;
-  font-size:16px;
-  font-weight:800;
+  border-radius:12px;
+  padding:15px 16px;
+  margin-top:7px;
+  font-size:17px;
+  font-weight:900;
   cursor:pointer;
 }
 .left-menu button:hover,
@@ -291,36 +294,10 @@ header nav button:hover{
 .main-content{min-width:0}
 @media(max-width:850px){
   .main-layout{grid-template-columns:1fr;padding:18px}
-  .left-menu{position:static;display:flex;gap:7px;overflow-x:auto;padding:10px}
+  .left-menu{position:static;display:flex;align-items:center;gap:6px;overflow-x:auto;padding:10px}
   .left-menu-title{display:none}
   .left-menu button{white-space:nowrap;width:auto;margin:0}
 }
-
-
-.left-menu{
-  background:#0b3568 !important;
-  border:1px solid #0b3568 !important;
-  color:#fff !important;
-  box-shadow:0 5px 18px rgba(0,0,0,.12) !important;
-}
-.left-menu-title{
-  color:#fff !important;
-  border-bottom:1px solid rgba(255,255,255,.28) !important;
-}
-.left-menu button{
-  background:transparent !important;
-  color:#fff !important;
-}
-.left-menu button:hover,
-.left-menu button.active{
-  background:#ffd33d !important;
-  color:#111 !important;
-}
-
-
-.detail-feature-title{font-size:18px;font-weight:900;color:#12375f;margin-top:22px;margin-bottom:8px}
-.detail-feature-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px 18px;color:#4c6072}
-@media(max-width:650px){.detail-feature-list{grid-template-columns:1fr}}
 
 </style>
 </head>
@@ -334,19 +311,19 @@ header nav button:hover{
 <main id="home">
 <div class="quickbar">
   <div>📞 <b>092-796-8777</b> &nbsp; | &nbsp; <b>092-872-8174</b></div>
+
+<div class="main-layout">
+  <aside class="left-menu">
+    <div class="left-menu-title">K-ROOF MENU</div>
+    <button class="active" data-target="products">ผลิตภัณฑ์</button>
+    <button data-target="services">โรงจอดรถ</button>
+    <button data-target="services">กันสาด</button>
+    <button data-target="services">โครงหลังคา</button>
+  </aside>
+  <main class="main-content">
+
   <a href="https://lin.ee/ONjTmCS" target="_blank">LINE: ติดต่อ K-Roof</a>
 </div>
-<div class="main-layout">
-
-<aside class="left-menu">
-  <div class="left-menu-title">K-ROOF MENU</div>
-  <button class="active" data-maincat="products">ผลิตภัณฑ์</button>
-  <button data-maincat="carport">โรงจอดรถ</button>
-  <button data-maincat="awning">กันสาด</button>
-  <button data-maincat="structure">โครงหลังคา</button>
-</aside>
-
-<main class="main-content">
 <section id="products">
 <div class="catalog-head">
   <div>
@@ -355,9 +332,7 @@ header nav button:hover{
     <p>รวมสินค้าแผ่นหลังคาหลายประเภท พร้อมดูรายละเอียดและเพิ่มรูปสินค้าได้ภายหลัง</p>
   </div>
 </div>
-<div class="grid" id="productGrid"></div></section>
-</main>
-</div>
+<div class="tabs" id="tabs"></div><div class="grid" id="productGrid"></div></section>
 
 <section id="services"><h2>บริการของ K-Roof</h2><p style="color:#64748b;margin-top:-12px;margin-bottom:24px">เลือกรูปแบบงานที่สนใจ แล้วกดดูรูปผลงานได้หลายรูป</p><div class="service" id="serviceGrid">
 <div class="card" onclick="openGallery('s:car1','โรงจอดรถ 1 คัน')"><div class="pic" id="spic-car1"><div class="placeholder">เพิ่มรูปโรงจอดรถ 1 คัน<br><b>คลิกเพื่อดูหลายรูป</b></div></div><div class="card-body"><h3>โรงจอดรถ 1 คัน</h3><span class="tag">มีแบบให้เลือก</span></div></div>
@@ -372,6 +347,9 @@ header nav button:hover{
 <div class="contact-item"><h3>ข้อมูลสินค้า</h3><p><a href="tel:0927968777">092-796-8777 (เค)</a><br><a href="tel:0928728174">092-872-8174 (แก้ว)</a></p></div>
 <div class="contact-item"><h3>LINE</h3><p><a href="https://lin.ee/ONjTmCS" target="_blank">แชทกับ K-Roof ทาง LINE</a></p></div>
 </div></section>
+
+  </main>
+</div>
 </main>
 
 <section id="admin">
@@ -465,34 +443,26 @@ const products = [
 
 const specs = {
  "VG Snow Roof":{
-   "ชื่อรุ่น":"หลังคาสโนว์ รูฟ โปร (Snow Roof Pro)",
-   "รายละเอียด":"แผ่นหลังคา UPVC ของแบรนด์ VG",
-   "ข้อมูลสเปก":"หน้าเว็บไซต์ที่ให้มายังไม่แสดงสเปกเฉพาะรุ่นแยกจากหน้า Glacier Roof"
+   "วัสดุ":"High Performance iR-uPVC Premium Grade",
+   "ความกว้าง":"ประมาณ 26.2 ซม.",
+   "ความยาว":"3 / 3.5 / 4 / 4.5 / 5 / 5.5 / 6 / 6.5 ม.",
+   "ความหนา":"ประมาณ 6 มม.",
+   "สี":"สีขาว"
  },
  "VG Glacia":{
    "ชื่อรุ่น":"หลังคาเกลเซีย รูฟ (Glacier Roof)",
-   "รายละเอียด":"แผ่นหลังคา UPVC ผิวเรียบ กันร้อน ลดเสียงฝน และทนทานทุกสภาพอากาศ",
    "ความหนา":"9 มม. (+/- 0.2)",
    "ขนาดแผ่น":"W 33.4 ซม. × H 3 ซม.",
    "จำนวนต่อความกว้าง":"3 แผ่น = กว้าง 1 เมตร",
-   "ความยาว":"3 / 3.5 / 4 / 4.5 / 5 / 5.5 / 6 ม. และ 6.5 ม. เป็นต้นไป (สั่งผลิต)",
+   "ความยาว":"3 / 3.5 / 4 / 4.5 / 5 / 5.5 / 6 ม. และ 6.5 ม.ขึ้นไป (สั่งผลิต)",
    "น้ำหนัก":"5.4 กก./ตร.ม.",
    "สี":"ขาว / น้ำตาลเข้ม / เทา / ดำ",
-   "วัสดุ":"iR-uPVC โครงสร้าง Multi-Layer Co-Extrusion / Hollow Tech",
+   "วัสดุ":"iR-uPVC Multi-Layer Co-Extrusion / Hollow Tech",
    "ระยะแป":"สีขาว 80 ซม. / สีเข้ม 60 ซม.",
-   "องศาหลังคา":"3° ขึ้นไป",
-   "การใช้งาน":"หลังคาหลัก, หลังคาต่อเติม, กันสาด, โรงจอดรถ, ผนัง Siding และติดตั้งร่วมกับ Solar Cell"
+   "องศาหลังคา":"3° ขึ้นไป"
  },
- "VG Winter Roof":{
-   "ชื่อรุ่น":"หลังคาวินเทอร์ รูฟ (Winter Roof)",
-   "รายละเอียด":"สินค้าแบรนด์ VG",
-   "ข้อมูลสเปก":"หน้าเว็บไซต์ที่ให้มายังไม่แสดงสเปกเฉพาะรุ่นแยกจากหน้า Glacier Roof"
- },
- "VG Winter Plus":{
-   "ชื่อรุ่น":"หลังคาวินเทอร์ พลัส (Winter Plus)",
-   "รายละเอียด":"สินค้าแบรนด์ VG",
-   "ข้อมูลสเปก":"หน้าเว็บไซต์ที่ให้มายังไม่แสดงสเปกเฉพาะรุ่นแยกจากหน้า Glacier Roof"
- },
+ "VG Winter Roof":{"ความกว้าง":"ยังไม่ได้ระบุ","ความยาว":"ยังไม่ได้ระบุ","สี":"ยังไม่ได้ระบุ"},
+ "VG Winter Plus":{"ความกว้าง":"ยังไม่ได้ระบุ","ความยาว":"ยังไม่ได้ระบุ","สี":"ยังไม่ได้ระบุ"},
  "RoofyRoof":{"ความกว้าง":"25 ซม.","ความยาว":"4 / 5 / 6 ม.","สี":"ยังไม่ได้ระบุ"},
  "ภูเขา PR4":{"ความกว้าง":"ยังไม่ได้ระบุ","ความยาว":"ยังไม่ได้ระบุ","สี":"ยังไม่ได้ระบุ"},
  "ภูเขา PR5":{"ความกว้าง":"ยังไม่ได้ระบุ","ความยาว":"ยังไม่ได้ระบุ","สี":"ยังไม่ได้ระบุ"},
@@ -502,6 +472,37 @@ const specs = {
  "D-Line":{"ความกว้าง":"ยังไม่ได้ระบุ","ความยาว":"ยังไม่ได้ระบุ","สี":"ยังไม่ได้ระบุ"},
  "โพลีคาร์บอเนต":{"ความกว้าง":"ยังไม่ได้ระบุ","ความยาว":"ยังไม่ได้ระบุ","สี":"ยังไม่ได้ระบุ"}
 };
+
+const serviceNames = ["โรงจอดรถ 1 คัน","โรงจอดรถ 2 คัน","โรงจอดรถ 3 คัน","โรงจอดรถ 4 คัน / รูฟ","กันสาด","ทำหลังคา"];
+
+let dbPromise;
+function db(){
+  if(dbPromise) return dbPromise;
+  dbPromise = new Promise((resolve,reject)=>{
+    const req=indexedDB.open("kroof_offline",1);
+    req.onupgradeneeded=()=>{ if(!req.result.objectStoreNames.contains("images")) req.result.createObjectStore("images"); };
+    req.onsuccess=()=>resolve(req.result);
+    req.onerror=()=>reject(req.error);
+  });
+  return dbPromise;
+}
+async function getImages(key){
+  try{
+    const d=await db();
+    return await new Promise((resolve,reject)=>{
+      const r=d.transaction("images","readonly").objectStore("images").get(key);
+      r.onsuccess=()=>resolve(r.result||[]);
+      r.onerror=()=>reject(r.error);
+    });
+  }catch(e){ return []; }
+}
+async function saveImages(key,arr){
+  const d=await db();
+  return new Promise((resolve,reject)=>{
+    const r=d.transaction("images","readwrite").objectStore("images").put(arr,key);
+    r.onsuccess=resolve; r.onerror=()=>reject(r.error);
+  });
+}
 
 function findProductGrid(){
   return document.getElementById("productGrid");
@@ -539,15 +540,6 @@ async function openProductDetail(index){
   document.getElementById("detailSpecs").innerHTML=Object.entries(spec).map(([k,v])=>
     '<div class="detail-spec-row"><span class="detail-spec-key">'+k+
     '</span><span class="detail-spec-value">'+v+'</span></div>').join("");
-  if(p[1]==="VG Glacia"){
-    const box=document.getElementById("detailSpecs");
-    box.insertAdjacentHTML("beforeend",'<div class="detail-feature-title">จุดเด่นจากข้อมูลสินค้า</div>'+
-      '<div class="detail-feature-list">'+
-      '<div>• กันความร้อนสูง</div><div>• ลดเสียงดัง</div><div>• ไม่กรอบแตกหักง่าย</div>'+
-      '<div>• สีสวยคงทน</div><div>• ติดตั้งง่ายและรวดเร็ว</div>'+
-      '<div>• Smart Lock ช่วยป้องกันการรั่วซึม</div><div>• น้ำหนัก 5.4 กก./ตร.ม.</div>'+
-      '</div>');
-  }
   const imgs=await getImages("p"+index);
   const box=document.getElementById("detailImages");
   if(!imgs.length){
@@ -611,26 +603,16 @@ window.closeProductDetail=closeProductDetail;
 
 <script>
 document.addEventListener("DOMContentLoaded",()=>{
-  const buttons=document.querySelectorAll(".left-menu button");
+  const menu=document.querySelector(".left-menu");
+  if(!menu)return;
+  const buttons=menu.querySelectorAll("button");
   buttons.forEach(btn=>{
     btn.addEventListener("click",()=>{
       buttons.forEach(b=>b.classList.remove("active"));
       btn.classList.add("active");
-      const cat=btn.dataset.maincat;
-      if(cat==="products"){
-        const grid=document.getElementById("productGrid");
-        if(grid) grid.closest("section")?.scrollIntoView({behavior:"smooth",block:"start"});
-      }else{
-        const serviceTitle=[...document.querySelectorAll("h2,h1,h3")].find(el=>{
-          const t=el.textContent.trim();
-          return (cat==="carport" && t.includes("บริการของ K-Roof")) ||
-                 (cat==="awning" && t.includes("บริการของ K-Roof")) ||
-                 (cat==="structure" && t.includes("บริการของ K-Roof"));
-        });
-        const serviceSection=document.querySelector('[id*="service"], .services');
-        if(serviceSection) serviceSection.scrollIntoView({behavior:"smooth",block:"start"});
-        else if(serviceTitle) serviceTitle.scrollIntoView({behavior:"smooth",block:"start"});
-      }
+      const target=btn.dataset.target;
+      const el=document.getElementById(target);
+      if(el) el.scrollIntoView({behavior:"smooth",block:"start"});
     });
   });
 });

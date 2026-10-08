@@ -153,6 +153,7 @@ header nav button:hover{
 @media(max-width:600px){.product-gallery{grid-template-columns:repeat(2,1fr)}.product-page-title{font-size:18px}}
 
 
+.photo-spec-title{font-size:12px;font-weight:900;color:#111;margin:8px 0 3px}
 .photo-spec{margin-top:8px;border-top:1px solid #e5e9ed;padding-top:7px}
 .spec-row{display:flex;justify-content:space-between;gap:8px;padding:3px 1px;font-size:12px;line-height:1.35}
 .spec-key{font-weight:900;color:#263b4f;white-space:nowrap}
@@ -348,7 +349,7 @@ async function openProductPage(index){
       <div class="product-photo" onclick="openProductBigImage(${index},${i})">
         <img src="${src}" alt="${p[1]} รูปที่ ${i+1}">
         <div class="product-photo-name">รูปที่ ${i+1}</div>
-        ${renderSpecText(p[1])}
+        <div class="photo-spec-title">ขนาดของแผ่นหลังคา</div>${renderSpecText(p[1])}
       </div>`).join("");
   }
   document.getElementById("productPage").classList.add("show");
@@ -376,9 +377,9 @@ const productSpecs = {
     "สี":"สีขาว"
   },
   "VG Glacia": {
-    "กว้าง":"33.4 ซม.",
-    "ยาว":"3 / 3.5 / 4 / 4.5 / 5 / 5.5 / 6 / 6.5 / 7 ม.",
-    "สี":"ยังไม่ได้ระบุในข้อมูลสินค้า"
+    "กว้าง":"33.4 เซนติเมตร",
+    "หนา":"3 เซนติเมตร (หรือ 9 มิลลิเมตร ขึ้นอยู่กับการวัดโครงสร้าง)",
+    "ยาว":"3 - 6.5 เมตร หรือสั่งยาว 7 เมตรขึ้นไป"
   },
   "VG Winter Roof": {
     "กว้าง":"ยังไม่ได้ระบุ",

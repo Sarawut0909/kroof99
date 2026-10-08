@@ -159,6 +159,50 @@ header nav button:hover{
 .spec-key{font-weight:900;color:#263b4f;white-space:nowrap}
 .spec-value{text-align:right;color:#647487}
 
+
+.product-detail-page{
+  position:fixed;inset:0;background:#f4f6f8;z-index:180;
+  display:none;overflow:auto
+}
+.product-detail-page.show{display:block}
+.detail-head{
+  position:sticky;top:0;z-index:5;background:#000;color:#fff;
+  display:flex;align-items:center;gap:14px;padding:14px 22px;
+  box-shadow:0 2px 12px rgba(0,0,0,.2)
+}
+.detail-back{
+  background:#111;color:#fff;border:1px solid #555;border-radius:9px;
+  padding:9px 15px;font-weight:900;cursor:pointer
+}
+.detail-title{font-size:21px;font-weight:900}
+.detail-wrap{max-width:1100px;margin:auto;padding:28px 20px 60px}
+.detail-info{
+  background:#fff;border-radius:16px;padding:22px;margin-bottom:24px;
+  box-shadow:0 4px 14px rgba(0,0,0,.06);border:1px solid #e0e5e9
+}
+.detail-info h2{margin:0 0 14px;font-size:22px}
+.detail-spec-row{
+  display:flex;gap:18px;border-bottom:1px solid #edf0f2;padding:9px 0;
+}
+.detail-spec-key{font-weight:900;min-width:120px;color:#263b4f}
+.detail-spec-value{color:#566a7c}
+.detail-images-title{font-size:20px;font-weight:900;margin:22px 0 12px}
+.detail-images{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:16px
+}
+.detail-image{
+  background:#fff;border-radius:14px;padding:8px;border:1px solid #dce3e9;
+  cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.06)
+}
+.detail-image img{
+  width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:9px;display:block
+}
+.detail-empty{
+  background:#fff;border:2px dashed #ccd5dd;border-radius:14px;
+  padding:50px 20px;text-align:center;color:#718092
+}
+@media(max-width:700px){.detail-images{grid-template-columns:repeat(2,1fr)}}
+
 </style>
 </head>
 <body>
@@ -216,7 +260,7 @@ header nav button:hover{
     <div class="product-page-title" id="productPageTitle">สินค้า</div>
   </div>
   <div class="product-page-body">
-    <div class="product-folder">📁 <span id="productFolderText">โฟลเดอร์สินค้า</span></div>
+    <div class="product-folder">📁 <span id="productFolderText">รายละเอียดสินค้า</span></div>
     <div class="product-gallery" id="productPageGallery"></div>
   </div>
 </div>
@@ -238,6 +282,22 @@ header nav button:hover{
         สามารถเพิ่มรูปได้จากเมนู “จัดการรูป”
       </div>
     </div>
+  </div>
+</div>
+
+
+<div class="product-detail-page" id="productDetailPage">
+  <div class="detail-head">
+    <button class="detail-back" onclick="closeProductDetail()">← กลับ</button>
+    <div class="detail-title" id="detailTitle">รายละเอียดสินค้า</div>
+  </div>
+  <div class="detail-wrap">
+    <div class="detail-info">
+      <h2>รายละเอียดของแผ่น</h2>
+      <div id="detailSpecs"></div>
+    </div>
+    <div class="detail-images-title">รูปสินค้า</div>
+    <div class="detail-images" id="detailImages"></div>
   </div>
 </div>
 
@@ -346,9 +406,9 @@ async function openProductPage(index){
     </div>`;
   }else{
     grid.innerHTML=imgs.map((src,i)=>`
-      <div class="product-photo" onclick="openProductBigImage(${index},${i})">
+      <div class="product-photo" onclick="openProductDetail(index)">
         <img src="${src}" alt="${p[1]} รูปที่ ${i+1}">
-        <div class="product-photo-name">รูปที่ ${i+1}</div>
+        <div class="product-photo-name">สอบถามราคา</div>
         <div class="photo-spec-title">ขนาดของแผ่นหลังคา</div>${renderSpecText(p[1])}
       </div>`).join("");
   }
@@ -443,6 +503,28 @@ function renderSpecText(title){
   return `<div class="photo-spec">${rows.map(([k,v])=>`
     <div class="spec-row"><span class="spec-key">${k}</span><span class="spec-value">${v}</span></div>
   `).join("")}</div>`;
+}
+
+
+async function openProductDetail(productIndex){
+  const p=products[productIndex];
+  if(!p)return;
+  const imgs=await get("p"+productIndex)||[];
+  document.getElementById("detailTitle").textContent=p[1];
+  const spec=productSpecs[p[1]]||{};
+  document.getElementById("detailSpecs").innerHTML=Object.entries(spec).length
+    ? Object.entries(spec).map(([k,v])=>`<div class="detail-spec-row"><span class="detail-spec-key">${k}</span><span class="detail-spec-value">${v}</span></div>`).join("")
+    : `<div style="color:#718092">ยังไม่มีรายละเอียดสินค้า</div>`;
+  const grid=document.getElementById("detailImages");
+  grid.innerHTML=imgs.length
+    ? imgs.map((src,i)=>`<div class="detail-image" onclick="openProductBigImage(${productIndex},${i})"><img src="${src}" alt="${p[1]} รูปที่ ${i+1}"></div>`).join("")
+    : `<div class="detail-empty" style="grid-column:1/-1">ยังไม่มีรูปสินค้า</div>`;
+  document.getElementById("productDetailPage").classList.add("show");
+  document.getElementById("productPage").classList.remove("show");
+  window.scrollTo(0,0);
+}
+function closeProductDetail(){
+  document.getElementById("productDetailPage").classList.remove("show");
 }
 
 </script>

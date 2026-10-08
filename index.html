@@ -152,6 +152,12 @@ header nav button:hover{
 @media(max-width:900px){.product-gallery{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:600px){.product-gallery{grid-template-columns:repeat(2,1fr)}.product-page-title{font-size:18px}}
 
+
+.photo-spec{margin-top:8px;border-top:1px solid #e5e9ed;padding-top:7px}
+.spec-row{display:flex;justify-content:space-between;gap:8px;padding:3px 1px;font-size:12px;line-height:1.35}
+.spec-key{font-weight:900;color:#263b4f;white-space:nowrap}
+.spec-value{text-align:right;color:#647487}
+
 </style>
 </head>
 <body>
@@ -186,7 +192,7 @@ header nav button:hover{
 </div></section>
 
 <section class="contact" id="contact"><h2>ติดต่อ K-Roof</h2><div class="contact-box">
-<div class="contact-item"><h3>โทร</h3><p><a href="tel:0927968777">092-796-8777 (เค)</a><br><a href="tel:0928728174">092-872-8174 (แก้ว)</a></p></div>
+<div class="contact-item"><h3>ข้อมูลสินค้า</h3><p><a href="tel:0927968777">092-796-8777 (เค)</a><br><a href="tel:0928728174">092-872-8174 (แก้ว)</a></p></div>
 <div class="contact-item"><h3>LINE</h3><p><a href="https://lin.ee/ONjTmCS" target="_blank">แชทกับ K-Roof ทาง LINE</a></p></div>
 </div></section>
 </main>
@@ -261,7 +267,7 @@ function renderTabs(){document.getElementById("tabs").innerHTML=Object.entries(c
 async function render(){
 renderTabs();let arr=products.filter(p=>current==="all"||p[0]===current);let grid=document.getElementById("productGrid");grid.innerHTML="";
 for(let i=0;i<arr.length;i++){let p=arr[i],idx=products.indexOf(p),imgs=await get("p"+idx)||[];let img=imgs[0];
-let c=document.createElement("div");c.className="card";c.onclick=()=>openGallery("p"+idx,p[1]);c.innerHTML=`<div class="pic">${img?`<img src="${img}" alt="${p[1]}">`:`<div class="placeholder">ยังไม่มีรูป<br><b>เพิ่มได้ภายหลัง</b></div>`}</div><div class="card-body"><span class="tag">${p[2]}</span><h3>${p[1]}</h3><div class="actions"><a class="btn small primary" href="https://lin.ee/ONjTmCS" target="_blank">สอบถามราคา</a><a class="btn small" href="tel:0927968777">โทร</a></div></div>`;grid.appendChild(c)}
+let c=document.createElement("div");c.className="card";c.onclick=()=>openGallery("p"+idx,p[1]);c.innerHTML=`<div class="pic">${img?`<img src="${img}" alt="${p[1]}">`:`<div class="placeholder">ยังไม่มีรูป<br><b>เพิ่มได้ภายหลัง</b></div>`}</div><div class="card-body"><span class="tag">${p[2]}</span><h3>${p[1]}</h3><div class="actions"><a class="btn small primary" href="https://lin.ee/ONjTmCS" target="_blank">รายละเอียดแผ่น</a><a class="btn small" href="tel:0927968777">ข้อมูลสินค้า</a></div></div>`;grid.appendChild(c)}
 }
 function filter(k){current=k;render()}
 function fillSelects(){document.getElementById("productSelect").innerHTML=products.map((p,i)=>`<option value="${i}">${p[1]} — ${p[2]}</option>`).join("")}
@@ -342,6 +348,7 @@ async function openProductPage(index){
       <div class="product-photo" onclick="openProductBigImage(${index},${i})">
         <img src="${src}" alt="${p[1]} รูปที่ ${i+1}">
         <div class="product-photo-name">รูปที่ ${i+1}</div>
+        ${renderSpecText(p[1])}
       </div>`).join("");
   }
   document.getElementById("productPage").classList.add("show");
@@ -357,6 +364,84 @@ async function openProductBigImage(productIndex,imageIndex){
   galleryTitle=products[productIndex][1];
   renderLightbox();
   document.getElementById("imageLightbox").classList.add("show");
+}
+
+
+const productSpecs = {
+  "VG Snow Roof": {
+    "วัสดุ":"High Performance iR-uPVC Premium Grade",
+    "กว้าง":"ประมาณ 26.2 ซม.",
+    "ยาว":"3 / 3.5 / 4 / 4.5 / 5 / 5.5 / 6 / 6.5 ม.",
+    "หนา":"ประมาณ 6 มม.",
+    "สี":"สีขาว"
+  },
+  "VG Glacia": {
+    "กว้าง":"33.4 ซม.",
+    "ยาว":"3 / 3.5 / 4 / 4.5 / 5 / 5.5 / 6 / 6.5 / 7 ม.",
+    "สี":"ยังไม่ได้ระบุในข้อมูลสินค้า"
+  },
+  "VG Winter Roof": {
+    "กว้าง":"ยังไม่ได้ระบุ",
+    "ยาว":"ยังไม่ได้ระบุ",
+    "สี":"ยังไม่ได้ระบุ"
+  },
+  "VG Winter Plus": {
+    "กว้าง":"ยังไม่ได้ระบุ",
+    "ยาว":"ยังไม่ได้ระบุ",
+    "สี":"ยังไม่ได้ระบุ"
+  },
+  "RoofyRoof": {
+    "กว้าง":"25 ซม.",
+    "ยาว":"4 / 5 / 6 ม.",
+    "สี":"ยังไม่ได้ระบุในข้อมูลสินค้า"
+  },
+  "ภูเขา PR4": {
+    "กว้าง":"ยังไม่ได้ระบุ",
+    "ยาว":"ยังไม่ได้ระบุ",
+    "สี":"ยังไม่ได้ระบุ"
+  },
+  "ภูเขา PR5": {
+    "กว้าง":"ยังไม่ได้ระบุ",
+    "ยาว":"ยังไม่ได้ระบุ",
+    "สี":"ยังไม่ได้ระบุ"
+  },
+  "ภูเขา PR8": {
+    "กว้าง":"ยังไม่ได้ระบุ",
+    "ยาว":"ยังไม่ได้ระบุ",
+    "สี":"ยังไม่ได้ระบุ"
+  },
+  "JROOF": {
+    "กว้าง":"ยังไม่ได้ระบุ",
+    "ยาว":"ยังไม่ได้ระบุ",
+    "สี":"ยังไม่ได้ระบุ"
+  },
+  "Mini Gold": {
+    "กว้าง":"105 ซม.",
+    "ยาว":"3 / 4 / 5 / 6 / 9 / 12 ม.",
+    "ความสูงลอน":"11 มม.",
+    "ความลาดชันขั้นต่ำ":"5 องศา",
+    "ระยะแป":"ไม่เกิน 100 ซม.",
+    "ป้องกัน UV":"UVIC / UVAS บล็อก UV ได้สูงสุด 99%"
+  },
+  "D-Line": {
+    "กว้าง":"ยังไม่ได้ระบุ",
+    "ยาว":"ยังไม่ได้ระบุ",
+    "สี":"ยังไม่ได้ระบุ"
+  },
+  "โพลีคาร์บอเนต": {
+    "กว้าง":"ยังไม่ได้ระบุ",
+    "ยาว":"ยังไม่ได้ระบุ",
+    "สี":"ยังไม่ได้ระบุ"
+  }
+};
+
+function renderSpecText(title){
+  const s=productSpecs[title]||{};
+  const rows=Object.entries(s);
+  if(!rows.length)return "";
+  return `<div class="photo-spec">${rows.map(([k,v])=>`
+    <div class="spec-row"><span class="spec-key">${k}</span><span class="spec-value">${v}</span></div>
+  `).join("")}</div>`;
 }
 
 </script>

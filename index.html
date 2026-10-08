@@ -317,6 +317,11 @@ header nav button:hover{
   color:#111 !important;
 }
 
+
+.detail-feature-title{font-size:18px;font-weight:900;color:#12375f;margin-top:22px;margin-bottom:8px}
+.detail-feature-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px 18px;color:#4c6072}
+@media(max-width:650px){.detail-feature-list{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -460,63 +465,43 @@ const products = [
 
 const specs = {
  "VG Snow Roof":{
-   "วัสดุ":"High Performance iR-uPVC Premium Grade",
-   "ความกว้าง":"ประมาณ 26.2 ซม.",
-   "ความยาว":"3 / 3.5 / 4 / 4.5 / 5 / 5.5 / 6 / 6.5 ม.",
-   "ความหนา":"ประมาณ 6 มม.",
-   "สี":"สีขาว"
+   "ชื่อรุ่น":"หลังคาสโนว์ รูฟ โปร (Snow Roof Pro)",
+   "รายละเอียด":"แผ่นหลังคา UPVC ของแบรนด์ VG",
+   "ข้อมูลสเปก":"หน้าเว็บไซต์ที่ให้มายังไม่แสดงสเปกเฉพาะรุ่นแยกจากหน้า Glacier Roof"
  },
  "VG Glacia":{
-   "ความกว้าง":"33.4 ซม.",
-   "ความหนา":"3 ซม. (หรือ 9 มม. ขึ้นอยู่กับการวัดโครงสร้าง)",
-   "ความยาว":"3–6.5 ม. หรือสั่งยาว 7 ม.ขึ้นไป"
+   "ชื่อรุ่น":"หลังคาเกลเซีย รูฟ (Glacier Roof)",
+   "รายละเอียด":"แผ่นหลังคา UPVC ผิวเรียบ กันร้อน ลดเสียงฝน และทนทานทุกสภาพอากาศ",
+   "ความหนา":"9 มม. (+/- 0.2)",
+   "ขนาดแผ่น":"W 33.4 ซม. × H 3 ซม.",
+   "จำนวนต่อความกว้าง":"3 แผ่น = กว้าง 1 เมตร",
+   "ความยาว":"3 / 3.5 / 4 / 4.5 / 5 / 5.5 / 6 ม. และ 6.5 ม. เป็นต้นไป (สั่งผลิต)",
+   "น้ำหนัก":"5.4 กก./ตร.ม.",
+   "สี":"ขาว / น้ำตาลเข้ม / เทา / ดำ",
+   "วัสดุ":"iR-uPVC โครงสร้าง Multi-Layer Co-Extrusion / Hollow Tech",
+   "ระยะแป":"สีขาว 80 ซม. / สีเข้ม 60 ซม.",
+   "องศาหลังคา":"3° ขึ้นไป",
+   "การใช้งาน":"หลังคาหลัก, หลังคาต่อเติม, กันสาด, โรงจอดรถ, ผนัง Siding และติดตั้งร่วมกับ Solar Cell"
  },
- "VG Winter Roof":{"ความกว้าง":"ยังไม่ได้ระบุ","ความยาว":"ยังไม่ได้ระบุ","สี":"ยังไม่ได้ระบุ"},
- "VG Winter Plus":{"ความกว้าง":"ยังไม่ได้ระบุ","ความยาว":"ยังไม่ได้ระบุ","สี":"ยังไม่ได้ระบุ"},
+ "VG Winter Roof":{
+   "ชื่อรุ่น":"หลังคาวินเทอร์ รูฟ (Winter Roof)",
+   "รายละเอียด":"สินค้าแบรนด์ VG",
+   "ข้อมูลสเปก":"หน้าเว็บไซต์ที่ให้มายังไม่แสดงสเปกเฉพาะรุ่นแยกจากหน้า Glacier Roof"
+ },
+ "VG Winter Plus":{
+   "ชื่อรุ่น":"หลังคาวินเทอร์ พลัส (Winter Plus)",
+   "รายละเอียด":"สินค้าแบรนด์ VG",
+   "ข้อมูลสเปก":"หน้าเว็บไซต์ที่ให้มายังไม่แสดงสเปกเฉพาะรุ่นแยกจากหน้า Glacier Roof"
+ },
  "RoofyRoof":{"ความกว้าง":"25 ซม.","ความยาว":"4 / 5 / 6 ม.","สี":"ยังไม่ได้ระบุ"},
  "ภูเขา PR4":{"ความกว้าง":"ยังไม่ได้ระบุ","ความยาว":"ยังไม่ได้ระบุ","สี":"ยังไม่ได้ระบุ"},
  "ภูเขา PR5":{"ความกว้าง":"ยังไม่ได้ระบุ","ความยาว":"ยังไม่ได้ระบุ","สี":"ยังไม่ได้ระบุ"},
  "ภูเขา PR8":{"ความกว้าง":"ยังไม่ได้ระบุ","ความยาว":"ยังไม่ได้ระบุ","สี":"ยังไม่ได้ระบุ"},
  "JROOF":{"ความกว้าง":"ยังไม่ได้ระบุ","ความยาว":"ยังไม่ได้ระบุ","สี":"ยังไม่ได้ระบุ"},
- "Mini Gold":{
-   "ความกว้าง":"105 ซม.","ความยาว":"3 / 4 / 5 / 6 / 9 / 12 ม.",
-   "ความสูงลอน":"11 มม.","ความลาดชันขั้นต่ำ":"5 องศา",
-   "ระยะแป":"ไม่เกิน 100 ซม.","ป้องกัน UV":"UVIC / UVAS บล็อก UV ได้สูงสุด 99%"
- },
+ "Mini Gold":{"ความกว้าง":"105 ซม.","ความยาว":"3 / 4 / 5 / 6 / 9 / 12 ม.","ความสูงลอน":"11 มม.","ความลาดชันขั้นต่ำ":"5 องศา","ระยะแป":"ไม่เกิน 100 ซม.","ป้องกัน UV":"UVIC / UVAS บล็อก UV ได้สูงสุด 99%"},
  "D-Line":{"ความกว้าง":"ยังไม่ได้ระบุ","ความยาว":"ยังไม่ได้ระบุ","สี":"ยังไม่ได้ระบุ"},
  "โพลีคาร์บอเนต":{"ความกว้าง":"ยังไม่ได้ระบุ","ความยาว":"ยังไม่ได้ระบุ","สี":"ยังไม่ได้ระบุ"}
 };
-
-const serviceNames = ["โรงจอดรถ 1 คัน","โรงจอดรถ 2 คัน","โรงจอดรถ 3 คัน","โรงจอดรถ 4 คัน / รูฟ","กันสาด","ทำหลังคา"];
-
-let dbPromise;
-function db(){
-  if(dbPromise) return dbPromise;
-  dbPromise = new Promise((resolve,reject)=>{
-    const req=indexedDB.open("kroof_offline",1);
-    req.onupgradeneeded=()=>{ if(!req.result.objectStoreNames.contains("images")) req.result.createObjectStore("images"); };
-    req.onsuccess=()=>resolve(req.result);
-    req.onerror=()=>reject(req.error);
-  });
-  return dbPromise;
-}
-async function getImages(key){
-  try{
-    const d=await db();
-    return await new Promise((resolve,reject)=>{
-      const r=d.transaction("images","readonly").objectStore("images").get(key);
-      r.onsuccess=()=>resolve(r.result||[]);
-      r.onerror=()=>reject(r.error);
-    });
-  }catch(e){ return []; }
-}
-async function saveImages(key,arr){
-  const d=await db();
-  return new Promise((resolve,reject)=>{
-    const r=d.transaction("images","readwrite").objectStore("images").put(arr,key);
-    r.onsuccess=resolve; r.onerror=()=>reject(r.error);
-  });
-}
 
 function findProductGrid(){
   return document.getElementById("productGrid");
@@ -554,6 +539,15 @@ async function openProductDetail(index){
   document.getElementById("detailSpecs").innerHTML=Object.entries(spec).map(([k,v])=>
     '<div class="detail-spec-row"><span class="detail-spec-key">'+k+
     '</span><span class="detail-spec-value">'+v+'</span></div>').join("");
+  if(p[1]==="VG Glacia"){
+    const box=document.getElementById("detailSpecs");
+    box.insertAdjacentHTML("beforeend",'<div class="detail-feature-title">จุดเด่นจากข้อมูลสินค้า</div>'+
+      '<div class="detail-feature-list">'+
+      '<div>• กันความร้อนสูง</div><div>• ลดเสียงดัง</div><div>• ไม่กรอบแตกหักง่าย</div>'+
+      '<div>• สีสวยคงทน</div><div>• ติดตั้งง่ายและรวดเร็ว</div>'+
+      '<div>• Smart Lock ช่วยป้องกันการรั่วซึม</div><div>• น้ำหนัก 5.4 กก./ตร.ม.</div>'+
+      '</div>');
+  }
   const imgs=await getImages("p"+index);
   const box=document.getElementById("detailImages");
   if(!imgs.length){

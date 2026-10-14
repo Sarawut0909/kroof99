@@ -355,6 +355,28 @@ header nav button:hover{
   .card-actions button{width:100%}
 }
 
+/* About K-Roof */
+.about-section{max-width:1200px;margin:0 auto;padding:38px 18px 48px}
+.about-hero{background:linear-gradient(135deg,#082b55,#0b4d8d);color:#fff;padding:30px;border-radius:20px;margin-bottom:20px}
+.about-hero .eyebrow{color:#ffd33d}
+.about-hero h2{color:#fff;margin:8px 0 12px}
+.about-hero p{font-size:17px;line-height:1.8;margin:0;max-width:900px}
+.about-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.about-card{background:#fff;border:1px solid #e0e6ed;border-radius:16px;padding:22px;box-shadow:0 5px 18px rgba(0,0,0,.05)}
+.about-card h3{color:#082b55;margin:0 0 13px;font-size:21px}
+.about-card p,.about-card li{line-height:1.8;color:#405166}
+.about-card ul{padding-left:22px;margin:0}
+.about-registration{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.about-reg-item{background:#f4f7fa;border-radius:10px;padding:12px}
+.about-reg-item span{display:block;font-size:13px;color:#64748b;margin-bottom:4px}
+.about-reg-item strong{color:#082b55;overflow-wrap:anywhere}
+.about-address{grid-column:1/-1}
+.about-mission{margin-top:18px;background:#fff8df;border:1px solid #f1dfa0;border-radius:16px;padding:22px}
+.about-mission h3{margin:0 0 8px;color:#705000}
+.about-mission p{margin:0;line-height:1.8;color:#4b4534}
+@media(max-width:650px){.about-grid,.about-registration{grid-template-columns:1fr}.about-address{grid-column:auto}.about-hero{padding:23px}.about-hero h2{font-size:27px}}
+
+
 
 .card-actions{
   display:flex !important;
@@ -412,55 +434,20 @@ header nav button{
   z-index:30 !important;
 }
 
+</style>
 
-.product-editor{
-  background:#fff;
-  border:1px solid #dce3e9;
-  border-radius:16px;
-  padding:20px;
-  margin-top:18px;
-  box-shadow:0 5px 16px rgba(0,0,0,.06);
-}
-.product-editor h3{margin:0 0 14px;color:#12375f}
-.editor-grid{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:12px;
-}
-.editor-field label{
-  display:block;
-  font-size:13px;
-  font-weight:900;
-  color:#334b61;
-  margin-bottom:5px;
-}
-.editor-field input,.editor-field textarea,.editor-field select{
-  width:100%;
-  box-sizing:border-box;
-  border:1px solid #ccd6df;
-  border-radius:9px;
-  padding:10px 11px;
-  font:inherit;
-  background:#fff;
-}
-.editor-field textarea{min-height:90px;resize:vertical}
-.editor-full{grid-column:1/-1}
-.editor-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
-.editor-btn{
-  border:0;border-radius:9px;padding:10px 15px;font-weight:900;cursor:pointer
-}
-.editor-save{background:#ffd33d;color:#111}
-.editor-delete{background:#e8edf2;color:#23384d}
-.editor-msg{margin-top:9px;font-size:13px;color:#26734d;font-weight:800}
-@media(max-width:650px){.editor-grid{grid-template-columns:1fr}.editor-full{grid-column:auto}}
-
+<style>
+#cloudAdminPanel{display:none;background:#fff;border:1px solid #d9e2ea;border-radius:16px;padding:20px;margin-top:18px}
+#cloudLogin{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9999;align-items:center;justify-content:center}
+#cloudLogin.show{display:flex}.cloud-box{width:min(420px,92vw);background:#fff;border-radius:16px;padding:22px;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.cloud-box h3{margin:0 0 14px}.cloud-box input,.cloud-box select,.cloud-box textarea{width:100%;box-sizing:border-box;padding:10px;border:1px solid #ccd6df;border-radius:8px;margin:5px 0 10px;font:inherit}.cloud-actions{display:flex;gap:8px;flex-wrap:wrap}.cloud-btn{border:0;border-radius:9px;padding:10px 14px;font-weight:900;cursor:pointer}.cloud-primary{background:#ffd33d;color:#111}.cloud-blue{background:#0b3568;color:#fff}.cloud-muted{background:#e9eef3}.cloud-note{font-size:13px;color:#617487;margin:8px 0}.cloud-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.cloud-full{grid-column:1/-1}.cloud-list{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}.cloud-list img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:8px}.cloud-img{position:relative}.cloud-img button{position:absolute;right:4px;top:4px;border:0;border-radius:7px;background:#fff;color:#a00;font-weight:900;cursor:pointer}@media(max-width:700px){.cloud-grid,.cloud-list{grid-template-columns:1fr 1fr}.cloud-full{grid-column:1/-1}}
 </style>
 </head>
 <body>
 <header><div class="nav">
 <div class="logo">K-Roof<small>หลังคาเครูฟ • จำหน่ายและรับติดตั้ง</small></div>
 <nav>
-<button onclick="go('home')">หน้าแรก</button><button onclick="go('products')">สินค้า</button><button onclick="go('services')">บริการ</button><button onclick="go('contact')">ติดต่อ</button><button onclick="toggleAdmin()">จัดการรูป</button>
+<button onclick="go('home')">หน้าแรก</button><button onclick="go('products')">สินค้า</button><button onclick="go('services')">บริการ</button><button onclick="go('about')">เกี่ยวกับเรา</button><button onclick="go('contact')">ติดต่อ</button><button onclick="toggleAdmin()">จัดการรูป</button>
 </nav></div></header>
 
 <main id="home">
@@ -500,6 +487,47 @@ header nav button{
 <div class="card" onclick="openGallery('s:roof','ทำหลังคา')"><div class="pic" id="spic-roof"><div class="placeholder">เพิ่มรูปงานหลังคา<br><b>คลิกเพื่อดูหลายรูป</b></div></div><div class="card-body"><h3>ทำหลังคา</h3><span class="tag">รับติดตั้ง</span></div></div>
 </div></section>
 
+<section class="about-section" id="about">
+  <div class="about-hero">
+    <div class="eyebrow">ABOUT K-ROOF</div>
+    <h2>เกี่ยวกับเรา | K-Roof ร้านหลังคาเครูฟ</h2>
+    <p>K-Roof ร้านจำหน่ายแผ่นหลังคาและให้บริการติดตั้งหลังคาสำหรับบ้านพักอาศัย อาคาร และพื้นที่ใช้งานหลากหลายรูปแบบ เรามุ่งเน้นการให้ข้อมูลสินค้าอย่างชัดเจน พร้อมช่วยแนะนำวัสดุและรูปแบบหลังคาให้เหมาะสมกับการใช้งานและงบประมาณของลูกค้า</p>
+  </div>
+  <div class="about-grid">
+    <div class="about-card">
+      <h3>บริการของเรา</h3>
+      <ul>
+        <li>จำหน่ายแผ่นหลังคาไวนิล เมทัลชีท PU Foam ไฟเบอร์กลาส และโพลีคาร์บอเนต</li>
+        <li>รับติดตั้งหลังคาโรงจอดรถและกันสาด</li>
+        <li>ให้บริการงานโครงสร้างหลังคาและงานต่อเติมตามความต้องการ</li>
+        <li>ให้คำแนะนำเรื่องการเลือกวัสดุ ขนาด และรูปแบบหลังคาให้เหมาะกับหน้างาน</li>
+        <li>ประสานงานและให้ข้อมูลสินค้าเพื่อช่วยลูกค้าวางแผนงบประมาณก่อนตัดสินใจ</li>
+      </ul>
+    </div>
+    <div class="about-card">
+      <h3>ผู้บริหาร</h3>
+      <p><strong>นายศราวุธ เนรจุล</strong><br>และ <strong>นางสาวรุ่งอรุณ เจแสง</strong></p>
+      <p>ทีมงาน K-Roof มุ่งมั่นให้บริการด้วยความใส่ใจ สื่อสารรายละเอียดสินค้าและขอบเขตงานให้ชัดเจน เพื่อให้ลูกค้าสามารถเลือกแนวทางที่เหมาะสมกับบ้านและอาคารของตนเอง</p>
+    </div>
+    <div class="about-card" style="grid-column:1/-1">
+      <h3>ข้อมูลทะเบียนพาณิชย์</h3>
+      <div class="about-registration">
+        <div class="about-reg-item"><span>ชื่อร้านที่ใช้ประกอบพาณิชยกิจ</span><strong>หลังคา เครูฟ</strong></div>
+        <div class="about-reg-item"><span>ชื่อภาษาอังกฤษ</span><strong>K-Roof</strong></div>
+        <div class="about-reg-item"><span>ทะเบียนเลขที่</span><strong>1840800001690</strong></div>
+        <div class="about-reg-item"><span>เลขคำขอจัดตั้งเลขที่</span><strong>1200668000116</strong></div>
+        <div class="about-reg-item"><span>วันที่จดทะเบียน</span><strong>9 ตุลาคม พ.ศ. 2568</strong></div>
+        <div class="about-reg-item"><span>ประเภทพาณิชยกิจ</span><strong>จำหน่ายแผ่นหลังคาทุกชนิด</strong></div>
+        <div class="about-reg-item about-address"><span>ที่ตั้งสำนักงานใหญ่ตามใบทะเบียน</span><strong>เลขที่ 98/12 หมู่ที่ 3 ตำบลบางรักพัฒนา อำเภอบางบัวทอง จังหวัดนนทบุรี 11110</strong></div>
+      </div>
+    </div>
+  </div>
+  <div class="about-mission">
+    <h3>ความมุ่งมั่นของ K-Roof</h3>
+    <p>เราให้ความสำคัญกับการให้ข้อมูลอย่างตรงไปตรงมา การเลือกวัสดุให้เหมาะกับลักษณะงาน และการประสานงานอย่างใส่ใจ ตั้งแต่การสอบถามข้อมูลไปจนถึงการวางแผนติดตั้ง ทั้งนี้ รายละเอียดสินค้า ราคา และขอบเขตงานจะพิจารณาตามรุ่นสินค้าและเงื่อนไขของแต่ละโครงการ</p>
+  </div>
+</section>
+
 <section class="contact" id="contact"><h2>ติดต่อ K-Roof</h2><div class="contact-box">
 <div class="contact-item"><h3>ข้อมูลสินค้า</h3><p><a href="tel:0927968777">092-796-8777 (เค)</a><br><a href="tel:0928728174">092-872-8174 (แก้ว)</a></p></div>
 <div class="contact-item"><h3>LINE</h3><p><a href="https://lin.ee/ONjTmCS" target="_blank">แชทกับ K-Roof ทาง LINE</a></p></div>
@@ -514,59 +542,36 @@ header nav button{
 <div class="admin-box"><h3>เพิ่มรูปให้บริการ</h3><select id="serviceSelect"><option value="car1">โรงจอดรถ 1 คัน</option><option value="car2">โรงจอดรถ 2 คัน</option><option value="car3">โรงจอดรถ 3 คัน</option><option value="car4">โรงจอดรถ 4 คัน + รูฟ</option><option value="awning">กันสาด</option><option value="roof">ทำหลังคา</option></select><input id="serviceImage" type="file" accept="image/*" multiple><button class="btn primary" onclick="saveServiceImages()">บันทึกรูปบริการ</button></div>
 </div>
 <p id="adminMsg" class="note"></p>
+<div id="cloudAdminPanel">
+<h3>จัดการข้อมูลออนไลน์ K-Roof</h3>
+<div class="cloud-note">ข้อมูลที่บันทึกตรงนี้จะเป็นข้อมูลกลาง ลูกค้าทุกคนเห็นเหมือนกัน</div>
+<div class="cloud-actions" style="margin:12px 0">
+<button class="cloud-btn cloud-blue" id="cloudNewProduct" type="button">＋ เพิ่มสินค้าใหม่</button>
+<button class="cloud-btn cloud-muted" id="cloudCancelNewProduct" type="button" style="display:none">ยกเลิกเพิ่มสินค้า</button>
 </div>
-<div class="product-editor" id="productEditor">
-  <h3>📝 แก้ไขรายละเอียดสินค้า</h3>
-  <div class="editor-grid">
-    <div class="editor-field editor-full">
-      <label>เลือกสินค้า</label>
-      <select id="editProduct"></select>
-    </div>
-    <div class="editor-field">
-      <label>ชื่อรุ่น</label>
-      <input id="editModel" placeholder="เช่น VG Glacia">
-    </div>
-    <div class="editor-field">
-      <label>ความกว้าง</label>
-      <input id="editWidth" placeholder="เช่น 33.4 ซม.">
-    </div>
-    <div class="editor-field">
-      <label>ความหนา</label>
-      <input id="editThickness" placeholder="เช่น 9 มม.">
-    </div>
-    <div class="editor-field">
-      <label>ความยาว</label>
-      <input id="editLength" placeholder="เช่น 3 / 4 / 5 / 6 ม.">
-    </div>
-    <div class="editor-field">
-      <label>สี</label>
-      <input id="editColors" placeholder="เช่น ขาว / เทา / น้ำตาล">
-    </div>
-    <div class="editor-field">
-      <label>วัสดุ</label>
-      <input id="editMaterial" placeholder="เช่น iR-uPVC">
-    </div>
-    <div class="editor-field">
-      <label>ระยะแป</label>
-      <input id="editPurlin" placeholder="เช่น 80 ซม.">
-    </div>
-    <div class="editor-field">
-      <label>ความลาดชัน</label>
-      <input id="editSlope" placeholder="เช่น 3° ขึ้นไป">
-    </div>
-    <div class="editor-field editor-full">
-      <label>รายละเอียดเพิ่มเติม</label>
-      <textarea id="editMore" placeholder="จุดเด่น / การใช้งาน / ข้อมูลอื่น ๆ"></textarea>
-    </div>
-  </div>
-  <div class="editor-actions">
-    <button class="editor-btn editor-save" id="saveProductSpec">บันทึกข้อมูลสินค้า</button>
-    <button class="editor-btn editor-delete" id="clearProductSpec">ล้างข้อมูลที่แก้เอง</button>
-  </div>
-  <div class="editor-msg" id="editorMsg"></div>
+<div class="cloud-grid">
+<div><label>เลือกสินค้าเดิมเพื่อแก้ไข</label><select id="cloudProduct"></select></div>
+<div><label>ชื่อสินค้า / รุ่น</label><input id="cloudName" placeholder="เช่น หลังคารุ่นใหม่"></div>
+<div><label>หมวดหมู่สินค้า</label><input id="cloudCategory" placeholder="เช่น ไวนิล, ไฟเบอร์กลาส, เมทัลชีท PU โฟม"></div>
+<div><label>ความกว้าง</label><input id="cloudWidth"></div>
+<div><label>ความหนา</label><input id="cloudThickness"></div>
+<div><label>ความยาว</label><input id="cloudLength"></div>
+<div><label>สี</label><input id="cloudColors"></div>
+<div><label>วัสดุ</label><input id="cloudMaterial"></div>
+<div><label>ระยะแป</label><input id="cloudPurlin"></div>
+<div><label>ความลาดชัน</label><input id="cloudSlope"></div>
+<div class="cloud-full"><label>รายละเอียดเพิ่มเติม</label><textarea id="cloudMore"></textarea></div>
+<div class="cloud-full"><label>เพิ่มรูปสินค้า (เลือกหลายรูปได้)</label><input id="cloudProductFiles" type="file" accept="image/*" multiple></div>
+</div>
+<div class="cloud-actions" style="margin-top:12px"><button class="cloud-btn cloud-primary" id="cloudSaveProduct">บันทึกสินค้า</button><button class="cloud-btn cloud-muted" id="cloudLogout">ออกจากระบบ</button></div>
+<div id="cloudProductImages" class="cloud-list"></div>
+<hr style="margin:20px 0;border:0;border-top:1px solid #e3e8ed">
+<h3>รูปบริการ</h3><div class="cloud-grid"><div><label>บริการ</label><select id="cloudService"></select></div><div><label>เพิ่มรูปบริการ</label><input id="cloudServiceFiles" type="file" accept="image/*" multiple></div></div>
+<div class="cloud-actions" style="margin-top:12px"><button class="cloud-btn cloud-blue" id="cloudSaveService">บันทึกรูปบริการ</button></div><div id="cloudServiceImages" class="cloud-list"></div>
+<div id="cloudMsg" class="cloud-note"></div>
 </div>
 
-</section>
+</div></section>
 
 
 
@@ -604,7 +609,6 @@ header nav button{
 
 <div class="product-detail-page" id="productDetailPage">
   <div class="detail-head">
-    <button class="detail-back" onclick="closeProductDetail()">← กลับ</button>
     <div class="detail-title" id="detailTitle">รายละเอียดสินค้า</div>
   </div>
   <div class="detail-wrap">
@@ -628,6 +632,8 @@ header nav button{
 
 
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
 <script>
 (function(){
 "use strict";
@@ -735,43 +741,48 @@ async function renderProducts(){
     card.querySelector(".detail-btn").addEventListener("click",()=>openProductDetail(i));
     card.querySelector(".price-btn").addEventListener("click",(e)=>{
       e.stopPropagation();
-      alert("กรุณาติดต่อ K-Roof เพื่อสอบถามราคา");
+      window.open("https://lin.ee/ONjTmCS", "_blank", "noopener,noreferrer");
     });
     grid.appendChild(card);
   }
 }
 
 async function openProductDetail(index){
-  const p=products[index];
-  const page=document.getElementById("productDetailPage");
-  if(!page) return;
-  document.getElementById("detailTitle").textContent=p[1];
-  const customAll=(window.kroofCustomSpecs && window.kroofCustomSpecs())||{};
-  const spec=Object.assign({}, specs[p[1]]||{}, customAll[p[1]]||{});
-  document.getElementById("detailSpecs").innerHTML=Object.entries(spec).map(([k,v])=>
-    '<div class="detail-spec-row"><span class="detail-spec-key">'+k+
-    '</span><span class="detail-spec-value">'+v+'</span></div>').join("");
-  const imgs=await getImages("p"+index);
-  const box=document.getElementById("detailImages");
-  if(!imgs.length){
-    box.innerHTML='<div class="detail-empty" style="grid-column:1/-1">ยังไม่มีรูปสินค้า</div>';
-  }else{
+  try {
+    const p=products[Number(index)];
+    const page=document.getElementById("productDetailPage");
+    if(!p || !page) throw new Error("ไม่พบข้อมูลสินค้าในหน้าเว็บ");
+    document.getElementById("detailTitle").textContent=p[1]||"รายละเอียดสินค้า";
+    const spec=specs[p[1]]||{};
+    document.getElementById("detailSpecs").innerHTML=Object.entries(spec).map(([k,v])=>
+      '<div class="detail-spec-row"><span class="detail-spec-key">'+k+'</span><span class="detail-spec-value">'+String(v??"")+'</span></div>').join("") || '<div class="detail-empty">ยังไม่มีรายละเอียดสินค้า</div>';
+    const imgs=await getImages("p"+Number(index));
+    const box=document.getElementById("detailImages");
+    if(!box) throw new Error("ไม่พบพื้นที่แสดงรูปสินค้า");
     box.innerHTML="";
-    imgs.forEach((src,i)=>{
-      const d=document.createElement("div");
-      d.className="detail-image";
-      d.innerHTML='<img src="'+src+'" alt="'+p[1]+' รูปที่ '+(i+1)+'">';
-      d.addEventListener("click",()=>openLightbox(imgs,i,p[1]));
-      box.appendChild(d);
+    if(!imgs.length){box.innerHTML='<div class="detail-empty" style="grid-column:1/-1">ยังไม่มีรูปสินค้า</div>';}
+    else imgs.forEach((src,i)=>{
+      const d=document.createElement("div"); d.className="detail-image";
+      const im=document.createElement("img"); im.src=src; im.alt=(p[1]||"สินค้า")+" รูปที่ "+(i+1);
+      d.appendChild(im); d.addEventListener("click",()=>openLightbox(imgs,i,p[1])); box.appendChild(d);
     });
+    page.classList.add("show");
+    if(!window.__kroofDetailOpen){history.pushState({kroofProductDetail:true},"",location.href);window.__kroofDetailOpen=true;}
+    window.scrollTo(0,0);
+  } catch(err) {
+    console.error("เปิดรายละเอียดสินค้าไม่สำเร็จ",err);
+    const box=document.getElementById("detailSpecs");
+    if(box) box.innerHTML='<div class="detail-empty">เปิดรายละเอียดสินค้าไม่สำเร็จ กรุณารีเฟรชหน้าเว็บแล้วลองอีกครั้ง<br><small>'+String(err?.message||err)+'</small></div>';
+    const page=document.getElementById("productDetailPage"); if(page) page.classList.add("show");
   }
-  page.classList.add("show");
-  window.scrollTo(0,0);
 }
-
-function closeProductDetail(){
+function closeProductDetail(fromPopState=false){
   const p=document.getElementById("productDetailPage");
   if(p) p.classList.remove("show");
+  if(window.__kroofDetailOpen){
+    window.__kroofDetailOpen=false;
+    if(!fromPopState && history.state && history.state.kroofProductDetail) history.back();
+  }
 }
 
 let lightImgs=[], lightIndex=0;
@@ -794,6 +805,9 @@ function moveLight(step){
   if(im)im.src=lightImgs[lightIndex];
 }
 
+window.addEventListener("popstate",()=>{
+  if(window.__kroofDetailOpen) closeProductDetail(true);
+});
 document.addEventListener("DOMContentLoaded",()=>{
   const back=document.getElementById("detailBack");
   if(back)back.addEventListener("click",closeProductDetail);
@@ -861,89 +875,290 @@ function toggleAdmin(){
 </script>
 
 
+<div id="cloudLogin"><div class="cloud-box"><h3>เข้าสู่ระบบผู้ดูแล K-Roof</h3><div class="cloud-note">ลูกค้าทั่วไปไม่สามารถแก้ไขข้อมูลได้</div><label>อีเมล</label><input id="cloudEmail" type="email" autocomplete="username"><label>รหัสผ่าน</label><input id="cloudPassword" type="password" autocomplete="current-password"><div class="cloud-actions"><button class="cloud-btn cloud-primary" id="cloudLoginBtn">เข้าสู่ระบบ</button><button class="cloud-btn cloud-muted" id="cloudCancelBtn">ยกเลิก</button></div><div id="cloudLoginMsg" class="cloud-note"></div></div></div>
+
 <script>
 (function(){
-const specStorageKey="kroof_product_specs";
+const C=window.KROOF_CONFIG||{}; let sb=null, cloudProducts=[], cloudServices=[], cloudProductImgs={}, cloudServiceImgs={}; let adminUser=null, isCreatingProduct=false;
+const baseProducts=[['p0','vinyl','VG Snow Roof','ไวนิล • VG'],['p1','vinyl','VG Glacia','ไวนิล • VG'],['p2','vinyl','VG Winter Roof','ไวนิล • VG'],['p3','vinyl','VG Winter Plus','ไวนิล • VG'],['p4','vinyl','RoofyRoof','ไวนิล'],['p5','vinyl','ภูเขา PR4','ไวนิล • ภูเขา'],['p6','vinyl','ภูเขา PR5','ไวนิล • ภูเขา'],['p7','vinyl','ภูเขา PR8','ไวนิล • ภูเขา'],['p8','fiberglass','JROOF','ไฟเบอร์กลาส'],['p9','fiberglass','Mini Gold','ไฟเบอร์กลาส'],['p10','fiberglass','D-Line','ไฟเบอร์กลาส'],['p11','poly','โพลีคาร์บอเนต','โพลีคาร์บอเนต']];
+const baseServices=[['car1','โรงจอดรถ 1 คัน'],['car2','โรงจอดรถ 2 คัน'],['car3','โรงจอดรถ 3 คัน'],['car4','โรงจอดรถ 4 คัน + รูฟ'],['awning','กันสาด'],['roof','ทำหลังคา']];
+function configured(){return C.supabaseUrl&&C.supabaseKey&&!C.supabaseUrl.includes('ใส่-')&&!C.supabaseKey.includes('ใส่-')}
 
-function loadCustomSpecs(){
-  try{return JSON.parse(localStorage.getItem(specStorageKey)||"{}")}catch(e){return {}}
+function storagePath(value){
+  if(!value)return "";
+  const marker="/storage/v1/object/public/kroof/",s=String(value);
+  if(s.includes(marker))return decodeURIComponent(s.split(marker)[1].split("?")[0]);
+  return s;
 }
-function saveCustomSpecs(x){localStorage.setItem(specStorageKey,JSON.stringify(x))}
-
-function editorProducts(){
-  return (window.products && Array.isArray(window.products)) ? window.products : [
-    ["vinyl","VG Snow Roof","ไวนิล • VG"],
-    ["vinyl","VG Glacia","ไวนิล • VG"],
-    ["vinyl","VG Winter Roof","ไวนิล • VG"],
-    ["vinyl","VG Winter Plus","ไวนิล • VG"],
-    ["vinyl","RoofyRoof","ไวนิล"],
-    ["vinyl","ภูเขา PR4","ไวนิล • ภูเขา"],
-    ["vinyl","ภูเขา PR5","ไวนิล • ภูเขา"],
-    ["vinyl","ภูเขา PR8","ไวนิล • ภูเขา"],
-    ["fiberglass","JROOF","ไฟเบอร์กลาส"],
-    ["fiberglass","Mini Gold","ไฟเบอร์กลาส"],
-    ["fiberglass","D-Line","ไฟเบอร์กลาส"],
-    ["poly","โพลีคาร์บอเนต","โพลีคาร์บอเนต"]
-  ];
+function publicUrl(value){
+  if(!value)return "";
+  const s=String(value);
+  if(/^https?:\/\//i.test(s))return s;
+  return sb.storage.from("kroof").getPublicUrl(storagePath(s)).data.publicUrl;
 }
-
-function fillEditor(){
-  const sel=document.getElementById("editProduct");
-  if(!sel)return;
-  const ps=editorProducts();
-  sel.innerHTML=ps.map((p,i)=>`<option value="${i}">${p[1]}</option>`).join("");
-  loadEditorValues();
+async function init(){
+  if(!configured()||!window.supabase)return;
+  sb=window.supabase.createClient(C.supabaseUrl,C.supabaseKey);
+  const s=await sb.auth.getSession();adminUser=s.data.session?.user||null;
+  await loadCloud();if(adminUser)showAdmin();
 }
-function loadEditorValues(){
-  const sel=document.getElementById("editProduct");
-  if(!sel)return;
-  const ps=editorProducts(), name=ps[Number(sel.value)]?.[1];
-  const custom=loadCustomSpecs()[name]||{};
-  const ids={
-    editModel:"ชื่อรุ่น",editWidth:"ความกว้าง",editThickness:"ความหนา",
-    editLength:"ความยาว",editColors:"สี",editMaterial:"วัสดุ",
-    editPurlin:"ระยะแป",editSlope:"ความลาดชัน",editMore:"รายละเอียดเพิ่มเติม"
-  };
-  Object.entries(ids).forEach(([id,key])=>{
-    const el=document.getElementById(id); if(el) el.value=custom[key]||"";
+async function loadCloud(){
+  if(!sb)return;
+  const a=await sb.from("products").select("*");
+  if(a.error){msg("อ่านตาราง products ไม่สำเร็จ: "+a.error.message);return;}
+  cloudProducts=a.data||[];
+  const b=await sb.from("services").select("*");
+  if(b.error){msg("อ่านตาราง services ไม่สำเร็จ: "+b.error.message);return;}
+  cloudServices=b.data||[];
+  const pi=await sb.from("product_images").select("*");cloudProductImgs={};
+  if(pi.error)msg("อ่านรูปสินค้าไม่สำเร็จ: "+pi.error.message);
+  (pi.data||[]).sort((x,y)=>(x.sort_order||0)-(y.sort_order||0)).forEach(x=>{
+    const raw=x.image_url||x.path||"";
+    (cloudProductImgs[x.product_id]??=[]).push({...x,storage_path:storagePath(raw),url:publicUrl(raw)});
   });
-  const msg=document.getElementById("editorMsg"); if(msg)msg.textContent="";
-}
-function saveEditorValues(){
-  const sel=document.getElementById("editProduct"), ps=editorProducts();
-  const name=ps[Number(sel.value)]?.[1]; if(!name)return;
-  const ids={
-    editModel:"ชื่อรุ่น",editWidth:"ความกว้าง",editThickness:"ความหนา",
-    editLength:"ความยาว",editColors:"สี",editMaterial:"วัสดุ",
-    editPurlin:"ระยะแป",editSlope:"ความลาดชัน",editMore:"รายละเอียดเพิ่มเติม"
-  };
-  const all=loadCustomSpecs(), obj={};
-  Object.entries(ids).forEach(([id,key])=>{
-    const v=(document.getElementById(id)?.value||"").trim();
-    if(v)obj[key]=v;
+  const si=await sb.from("service_images").select("*");cloudServiceImgs={};
+  if(si.error)msg("อ่านรูปบริการไม่สำเร็จ: "+si.error.message);
+  (si.data||[]).sort((x,y)=>(x.sort_order||0)-(y.sort_order||0)).forEach(x=>{
+    const raw=x.image_url||x.path||"";
+    (cloudServiceImgs[x.service_id]??=[]).push({...x,storage_path:storagePath(raw),url:publicUrl(raw)});
   });
-  all[name]=obj; saveCustomSpecs(all);
-  const msg=document.getElementById("editorMsg");
-  if(msg)msg.textContent="บันทึกข้อมูล "+name+" แล้ว";
+  if(cloudProducts.length)renderCloudProducts();renderCloudServices();
 }
-function clearEditorValues(){
-  const sel=document.getElementById("editProduct"), ps=editorProducts();
-  const name=ps[Number(sel.value)]?.[1]; if(!name)return;
-  const all=loadCustomSpecs(); delete all[name]; saveCustomSpecs(all);
-  loadEditorValues();
-  const msg=document.getElementById("editorMsg");
-  if(msg)msg.textContent="ล้างข้อมูลที่แก้เองแล้ว";
+function renderCloudProducts(){
+  const grid=document.getElementById("productGrid");if(!grid)return;grid.innerHTML="";
+  cloudProducts.forEach(p=>{
+    const imgs=cloudProductImgs[p.id]||[],card=document.createElement("div");card.className="card";
+    card.innerHTML='<div class="pic product-card-click">'+(imgs[0]?'<img src="'+imgs[0].url+'" alt="">':'<div class="placeholder">ยังไม่มีรูป<br><b>เพิ่มได้ภายหลัง</b></div>')+'</div><div class="card-body"><span class="tag"></span><h3></h3><div class="card-actions"><button class="price-btn" type="button">สอบถามราคา</button><button class="detail-btn" type="button">รายละเอียด</button></div></div>';
+    card.querySelector(".tag").textContent=p.category||p.tag||"K-Roof";card.querySelector("h3").textContent=p.name||"สินค้า";
+    card.querySelector(".pic").onclick=()=>cloudDetail(p.id).catch(e=>console.error(e));card.querySelector(".detail-btn").onclick=()=>cloudDetail(p.id).catch(e=>console.error(e));
+    card.querySelector(".price-btn").onclick=e=>{e.stopPropagation();window.open("https://lin.ee/ONjTmCS", "_blank", "noopener,noreferrer");};grid.appendChild(card);
+  });
 }
-
-document.addEventListener("DOMContentLoaded",()=>{
-  fillEditor();
-  document.getElementById("editProduct")?.addEventListener("change",loadEditorValues);
-  document.getElementById("saveProductSpec")?.addEventListener("click",saveEditorValues);
-  document.getElementById("clearProductSpec")?.addEventListener("click",clearEditorValues);
+async function cloudDetail(id){
+  try {
+    const p=cloudProducts.find(x=>String(x.id)===String(id));
+    if(!p) throw new Error("ไม่พบข้อมูลสินค้านี้ในฐานข้อมูล");
+    const title=document.getElementById("detailTitle"), specsBox=document.getElementById("detailSpecs"), box=document.getElementById("detailImages"), page=document.getElementById("productDetailPage");
+    if(!title||!specsBox||!box||!page) throw new Error("องค์ประกอบหน้ารายละเอียดไม่ครบ กรุณาใช้ไฟล์ index.html ฉบับเต็ม");
+    title.textContent=p.name||"รายละเอียดสินค้า";
+    let spec=p.specs||{};
+    if(typeof spec==="string"){try{spec=JSON.parse(spec)}catch(_){spec={"รายละเอียดเพิ่มเติม":spec}}}
+    if(!spec||typeof spec!=="object"||Array.isArray(spec))spec={};
+    specsBox.innerHTML=Object.entries(spec).filter(([k,v])=>String(v??"").trim()).map(([k,v])=>'<div class="detail-spec-row"><span class="detail-spec-key"></span><span class="detail-spec-value"></span></div>').join("");
+    [...specsBox.querySelectorAll('.detail-spec-row')].forEach((row,i)=>{const [k,v]=Object.entries(spec).filter(([k,v])=>String(v??"").trim())[i];row.children[0].textContent=k;row.children[1].textContent=String(v??"");});
+    if(!specsBox.innerHTML)specsBox.innerHTML='<div class="detail-empty">ยังไม่มีรายละเอียดสินค้า</div>';
+    const imgs=cloudProductImgs[String(id)]||cloudProductImgs[id]||[];
+    box.innerHTML="";
+    if(!imgs.length)box.innerHTML='<div class="detail-empty" style="grid-column:1/-1">ยังไม่มีรูปสินค้า</div>';
+    else imgs.forEach((x,i)=>{const d=document.createElement("div");d.className="detail-image";const im=document.createElement("img");im.src=x.url;im.alt=(p.name||"สินค้า")+" รูปที่ "+(i+1);d.appendChild(im);d.onclick=()=>openCloudLightbox(imgs.map(y=>y.url),i,p.name);box.appendChild(d);});
+    page.classList.add("show");
+    if(!window.__kroofDetailOpen){history.pushState({kroofProductDetail:true},"",location.href);window.__kroofDetailOpen=true;}
+    window.scrollTo(0,0);
+  } catch(err) {
+    console.error("เปิดรายละเอียดสินค้าออนไลน์ไม่สำเร็จ",err);
+    const page=document.getElementById("productDetailPage"),specsBox=document.getElementById("detailSpecs");
+    if(specsBox)specsBox.textContent="เปิดรายละเอียดสินค้าไม่สำเร็จ: "+(err?.message||String(err));
+    if(page)page.classList.add("show");
+  }
+}
+function renderCloudServices(){
+  const names={car1:"โรงจอดรถ 1 คัน",car2:"โรงจอดรถ 2 คัน",car3:"โรงจอดรถ 3 คัน",car4:"โรงจอดรถ 4 คัน + รูฟ",awning:"กันสาด",roof:"ทำหลังคา"};
+  Object.keys(names).forEach(id=>{const box=document.getElementById("spic-"+id),imgs=cloudServiceImgs[id]||[];if(box)box.innerHTML=imgs[0]?'<img src="'+imgs[0].url+'" alt="">':'<div class="placeholder">เพิ่มรูป'+names[id]+'<br><b>คลิกเพื่อดูหลายรูป</b></div>';});
+}
+function showLogin(){document.getElementById("cloudLogin").classList.add("show");}
+function hideLogin(){document.getElementById("cloudLogin").classList.remove("show");}
+function showAdmin(){
+  const section=document.getElementById("admin");if(section)section.style.display="block";
+  document.querySelectorAll("#admin .admin-row, #admin > .admin-inner > .note").forEach(el=>el.style.display="none");
+  document.getElementById("cloudAdminPanel").style.display="block";populateEditor();
+}
+function hideAdmin(){document.getElementById("cloudAdminPanel").style.display="none";const a=document.getElementById("admin");if(a)a.style.display="none";}
+async function toggle(){
+  if(!configured()){alert("ยังไม่ได้ตั้งค่า Supabase ใน config.js");return;}
+  if(!sb){try{await init();}catch(e){alert("เชื่อมต่อ Supabase ไม่สำเร็จ: "+(e.message||e));return;}}
+  if(adminUser){showAdmin();document.getElementById("admin").scrollIntoView({behavior:"smooth",block:"start"});}else showLogin();
+}
+async function login(){
+  const email=document.getElementById("cloudEmail").value.trim(),password=document.getElementById("cloudPassword").value,m=document.getElementById("cloudLoginMsg");
+  if(!sb){m.textContent="ยังเชื่อมต่อฐานข้อมูลไม่ได้ กรุณารีเฟรชหน้าเว็บ";return;}
+  m.textContent="กำลังเข้าสู่ระบบ...";const r=await sb.auth.signInWithPassword({email,password});
+  if(r.error){m.textContent="เข้าสู่ระบบไม่สำเร็จ: "+r.error.message;return;}
+  adminUser=r.data.user;hideLogin();showAdmin();document.getElementById("admin").scrollIntoView({behavior:"smooth",block:"start"});
+}
+async function logout(){if(sb)await sb.auth.signOut();adminUser=null;hideAdmin();}
+function populateEditor(){
+  const ps=cloudProducts.length?cloudProducts:baseProducts.map(x=>({id:x[0],name:x[2],category:x[3],specs:{}})),sel=document.getElementById("cloudProduct"),old=sel.value;
+  sel.innerHTML=ps.map(p=>'<option value="'+p.id+'">'+(p.name||p.id)+'</option>').join("");if(ps.some(p=>String(p.id)===String(old)))sel.value=old;
+  const fallback=baseServices.map(([id,name])=>({id,name})),ss=cloudServices.length?cloudServices:fallback,sv=document.getElementById("cloudService"),oldService=sv.value;
+  sv.innerHTML=ss.map(s=>'<option value="'+s.id+'">'+(s.name||s.title||s.id)+'</option>').join("");if(ss.some(s=>String(s.id)===String(oldService)))sv.value=oldService;
+  loadEditor();loadServiceImages();
+}
+function loadEditor(){
+  if(isCreatingProduct)return;
+  const id=document.getElementById("cloudProduct").value,p=cloudProducts.find(x=>String(x.id)===String(id));
+  if(!p){renderEditorImages();return;}const s=p.specs&&typeof p.specs==="object"?p.specs:{};
+  document.getElementById("cloudName").value=p.name||"";
+  document.getElementById("cloudCategory").value=p.category||p.tag||"";
+  document.getElementById("cloudWidth").value=s["ความกว้าง"]||"";
+  document.getElementById("cloudThickness").value=s["ความหนา"]||"";
+  document.getElementById("cloudLength").value=s["ความยาว"]||"";
+  document.getElementById("cloudColors").value=s["สี"]||"";
+  document.getElementById("cloudMaterial").value=s["วัสดุ"]||"";
+  document.getElementById("cloudPurlin").value=s["ระยะแป"]||"";
+  document.getElementById("cloudSlope").value=s["ความลาดชัน"]||s["องศาหลังคา"]||"";
+  document.getElementById("cloudMore").value=s["รายละเอียดเพิ่มเติม"]||"";renderEditorImages();
+}
+function renderEditorImages(){
+  const id=document.getElementById("cloudProduct").value,box=document.getElementById("cloudProductImages");
+  box.innerHTML=(cloudProductImgs[id]||[]).map(x=>'<div class="cloud-img"><img src="'+x.url+'" alt=""><button data-id="'+x.id+'" data-path="'+x.storage_path+'">×</button></div>').join("");
+  box.querySelectorAll("button").forEach(b=>b.onclick=()=>deleteProductImage(b.dataset.id,b.dataset.path));
+}
+function loadServiceImages(){
+  const id=document.getElementById("cloudService").value,box=document.getElementById("cloudServiceImages");
+  box.innerHTML=(cloudServiceImgs[id]||[]).map(x=>'<div class="cloud-img"><img src="'+x.url+'" alt=""><button data-id="'+x.id+'" data-path="'+x.storage_path+'">×</button></div>').join("");
+  box.querySelectorAll("button").forEach(b=>b.onclick=()=>deleteServiceImage(b.dataset.id,b.dataset.path));
+}
+function startNewProduct(){
+  isCreatingProduct=true;
+  document.getElementById("cloudProduct").disabled=true;
+  document.getElementById("cloudNewProduct").style.display="none";
+  document.getElementById("cloudCancelNewProduct").style.display="inline-block";
+  document.getElementById("cloudName").value="";
+  document.getElementById("cloudCategory").value="";
+  ["cloudWidth","cloudThickness","cloudLength","cloudColors","cloudMaterial","cloudPurlin","cloudSlope","cloudMore"].forEach(id=>document.getElementById(id).value="");
+  document.getElementById("cloudProductFiles").value="";
+  document.getElementById("cloudProductImages").innerHTML="";
+  msg("กำลังเพิ่มสินค้าใหม่ กรอกชื่อสินค้า หมวดหมู่ รายละเอียด และเลือกรูปภาพ แล้วกดบันทึกสินค้า");
+}
+function cancelNewProduct(){
+  isCreatingProduct=false;
+  document.getElementById("cloudProduct").disabled=false;
+  document.getElementById("cloudNewProduct").style.display="inline-block";
+  document.getElementById("cloudCancelNewProduct").style.display="none";
+  document.getElementById("cloudProductFiles").value="";
+  populateEditor();
+  msg("ยกเลิกการเพิ่มสินค้าใหม่แล้ว");
+}
+async function saveProduct(){
+  if(!sb||!adminUser){msg("กรุณาเข้าสู่ระบบผู้ดูแลก่อน");return;}
+  const name=document.getElementById("cloudName").value.trim();
+  const category=document.getElementById("cloudCategory").value.trim();
+  if(!name){msg("กรุณากรอกชื่อสินค้า");return;}
+  if(!category){msg("กรุณากรอกหมวดหมู่สินค้า เช่น ไวนิล หรือไฟเบอร์กลาส");return;}
+  const specs={"ความกว้าง":document.getElementById("cloudWidth").value.trim(),"ความหนา":document.getElementById("cloudThickness").value.trim(),"ความยาว":document.getElementById("cloudLength").value.trim(),"สี":document.getElementById("cloudColors").value.trim(),"วัสดุ":document.getElementById("cloudMaterial").value.trim(),"ระยะแป":document.getElementById("cloudPurlin").value.trim(),"ความลาดชัน":document.getElementById("cloudSlope").value.trim(),"รายละเอียดเพิ่มเติม":document.getElementById("cloudMore").value.trim()};
+  Object.keys(specs).forEach(k=>{if(!specs[k])delete specs[k];});
+  const files=document.getElementById("cloudProductFiles").files;
+  const saveBtn=document.getElementById("cloudSaveProduct");
+  saveBtn.disabled=true;
+  msg("กำลังบันทึกข้อมูลสินค้า...");
+  try{
+    let id;
+    if(isCreatingProduct){
+      const newProductId="prod-"+Date.now().toString(36)+"-"+Math.random().toString(36).slice(2,8); const r=await sb.from("products").insert({id:newProductId,name,category,specs}).select().single();
+      if(r.error)throw new Error("เพิ่มข้อมูลสินค้าไม่สำเร็จ: "+r.error.message);
+      id=r.data.id;
+    }else{
+      id=document.getElementById("cloudProduct").value;
+      const p=cloudProducts.find(x=>String(x.id)===String(id));
+      if(!p)throw new Error("ไม่พบสินค้าในตาราง products กรุณารีเฟรชหน้าเว็บ");
+      const r=await sb.from("products").update({name,category,specs,updated_at:new Date().toISOString()}).eq("id",id);
+      if(r.error)throw new Error("บันทึกข้อมูลสินค้าไม่สำเร็จ: "+r.error.message);
+    }
+    if(files.length){
+      msg("บันทึกข้อมูลแล้ว กำลังอัปโหลดรูป "+files.length+" รูป...");
+      const up=await uploadFiles("product",id,files);
+      if(!up.ok)throw new Error("บันทึกข้อมูลสินค้าแล้ว แต่รูปภาพอัปโหลดไม่สำเร็จ: "+up.error);
+    }
+    isCreatingProduct=false;
+    document.getElementById("cloudProduct").disabled=false;
+    document.getElementById("cloudNewProduct").style.display="inline-block";
+    document.getElementById("cloudCancelNewProduct").style.display="none";
+    document.getElementById("cloudProductFiles").value="";
+    await loadCloud();populateEditor();
+    const sel=document.getElementById("cloudProduct");
+    if([...sel.options].some(o=>String(o.value)===String(id)))sel.value=id;
+    loadEditor();
+    msg(rSafeName(name)+" บันทึกเรียบร้อยแล้ว"+(files.length?" พร้อมอัปโหลด "+files.length+" รูป":""));
+  }catch(e){
+    msg("เกิดข้อผิดพลาด: "+(e.message||String(e))+" — กรุณาถ่ายภาพข้อความนี้ส่งให้ผู้ดูแลเว็บ");
+  }finally{
+    saveBtn.disabled=false;
+  }
+}
+function rSafeName(name){return "สินค้า “"+name+"”";}
+async function saveService(){
+  if(!sb||!adminUser){msg("กรุณาเข้าสู่ระบบผู้ดูแลก่อน");return;}
+  const id=document.getElementById("cloudService").value;
+  const files=document.getElementById("cloudServiceFiles").files;
+  if(!id){msg("กรุณาเลือกบริการ");return;}
+  if(!files.length){msg("กรุณาเลือกไฟล์รูปบริการก่อนกดบันทึก");return;}
+  const btn=document.getElementById("cloudSaveService");
+  btn.disabled=true;
+  msg("กำลังอัปโหลดรูปบริการ...");
+  try{
+    if(!cloudServices.some(s=>String(s.id)===String(id))){
+      throw new Error("ไม่พบรายการบริการนี้ในตาราง services ออนไลน์ กรุณาตรวจสอบว่ามีข้อมูลบริการในฐานข้อมูลก่อนเพิ่มรูป");
+    }
+    const up=await uploadFiles("service",id,files);
+    if(!up.ok)throw new Error(up.error||"ระบบไม่สามารถอัปโหลดรูปบริการได้");
+    document.getElementById("cloudServiceFiles").value="";
+    await loadCloud();populateEditor();
+    msg("บันทึกรูปบริการเรียบร้อยแล้ว");
+  }catch(e){
+    msg("เพิ่มรูปบริการไม่สำเร็จ: "+(e.message||String(e))+" — กรุณาถ่ายภาพข้อความนี้ส่งให้ผู้ดูแลเว็บ");
+  }finally{
+    btn.disabled=false;
+  }
+}
+async function uploadFiles(type,id,files){
+  if(!sb) return {ok:false,error:"ยังไม่ได้เชื่อมต่อ Supabase"};
+  if(!id) return {ok:false,error:"ไม่พบรหัสสินค้า/บริการ"};
+  if(!files||!files.length)return {ok:true};
+  let order=0;
+  for(const f of Array.from(files)){
+    const safe=f.name.replace(/[^a-zA-Z0-9._-]/g,"_");
+    const path=(type==="product"?"products/":"services/")+id+"/"+Date.now()+"_"+Math.random().toString(36).slice(2)+"_"+safe;
+    const uploaded=await sb.storage.from("kroof").upload(path,f,{upsert:false,contentType:f.type||"image/jpeg"});
+    if(uploaded.error)return {ok:false,error:"อัปโหลดไฟล์ "+f.name+" ไม่สำเร็จ: "+uploaded.error.message};
+    const table=type==="product"?"product_images":"service_images";
+    const field=type==="product"?"product_id":"service_id";
+    const imageUrl=sb.storage.from("kroof").getPublicUrl(path).data.publicUrl;
+    const saved=await sb.from(table).insert({[field]:id,image_url:imageUrl,sort_order:++order});
+    if(saved.error){
+      await sb.storage.from("kroof").remove([path]);
+      return {ok:false,error:"อัปโหลดไฟล์แล้ว แต่บันทึกรายการรูปใน "+table+" ไม่สำเร็จ: "+saved.error.message};
+    }
+  }
+  return {ok:true};
+}
+async function deleteProductImage(id,path){
+  if(!confirm("ลบรูปนี้ใช่ไหม?"))return;
+  if(path){const r=await sb.storage.from("kroof").remove([path]);if(r.error){msg("ลบไฟล์ไม่สำเร็จ: "+r.error.message);return;}}
+  const r=await sb.from("product_images").delete().eq("id",id);if(r.error){msg("ลบข้อมูลรูปไม่สำเร็จ: "+r.error.message);return;}
+  await loadCloud();populateEditor();msg("ลบรูปสินค้าแล้ว");
+}
+async function deleteServiceImage(id,path){
+  if(!confirm("ลบรูปนี้ใช่ไหม?"))return;
+  if(path){const r=await sb.storage.from("kroof").remove([path]);if(r.error){msg("ลบไฟล์ไม่สำเร็จ: "+r.error.message);return;}}
+  const r=await sb.from("service_images").delete().eq("id",id);if(r.error){msg("ลบข้อมูลรูปไม่สำเร็จ: "+r.error.message);return;}
+  await loadCloud();populateEditor();msg("ลบรูปบริการแล้ว");
+}
+function msg(t){const el=document.getElementById("cloudMsg");if(el)el.textContent=t;}
+function openCloudLightbox(imgs,i,title){window.__cloudImgs=imgs;window.__cloudI=i;const b=document.getElementById('imageLightbox');b.classList.add('show');document.getElementById('lightboxImage').src=imgs[i];document.getElementById('lightboxCaption').textContent=title;}
+window.changeGallery=function(d){const a=window.__cloudImgs||[];if(!a.length)return;window.__cloudI=(window.__cloudI+d+a.length)%a.length;document.getElementById('lightboxImage').src=a[window.__cloudI]};window.closeImageLightbox=function(){document.getElementById('imageLightbox').classList.remove('show')};window.openGallery=async function(key,title){const id=key.split(':')[1],imgs=cloudServiceImgs[id]||[];const m=document.getElementById('galleryModal');document.getElementById('galleryTitle').textContent=title;document.getElementById('galleryFolderName').textContent=title;document.getElementById('galleryThumbs').innerHTML=imgs.map((x,i)=>'<img src="'+x.url+'" style="width:100%;border-radius:10px;cursor:pointer" data-i="'+i+'">').join('');document.getElementById('galleryEmpty').style.display=imgs.length?'none':'block';document.getElementById('galleryModal').classList.add('show');document.querySelectorAll('#galleryThumbs img').forEach((im,i)=>im.onclick=()=>openCloudLightbox(imgs.map(x=>x.url),i,title));};window.closeGallery=function(){document.getElementById('galleryModal').classList.remove('show')};window.closeProductPage=function(){document.getElementById('productPage').classList.remove('show')};window.toggleAdmin=toggle;window.saveProductImages=()=>saveProduct();window.saveServiceImages=()=>saveService();
+document.addEventListener('DOMContentLoaded',()=>{
+  document.getElementById('cloudLoginBtn').onclick=()=>login().catch(e=>{document.getElementById('cloudLoginMsg').textContent=e.message||String(e);});
+  document.getElementById('cloudCancelBtn').onclick=hideLogin;
+  document.getElementById('cloudLogout').onclick=()=>logout().catch(e=>msg(e.message||String(e)));
+  document.getElementById('cloudProduct').onchange=loadEditor;
+  document.getElementById('cloudNewProduct').onclick=startNewProduct;
+  document.getElementById('cloudCancelNewProduct').onclick=cancelNewProduct;
+  document.getElementById('cloudService').onchange=loadServiceImages;
+  document.getElementById('cloudSaveProduct').onclick=()=>saveProduct().catch(e=>msg('บันทึกไม่สำเร็จ: '+(e.message||e)));
+  document.getElementById('cloudSaveService').onclick=()=>saveService().catch(e=>msg('บันทึกไม่สำเร็จ: '+(e.message||e)));
+  init().catch(e=>{const el=document.getElementById('cloudMsg');if(el)el.textContent='เชื่อมต่อระบบไม่สำเร็จ: '+(e.message||e);});
 });
-window.kroofCustomSpecs=loadCustomSpecs;
 })();
 </script>
-
 </body>
 </html>
